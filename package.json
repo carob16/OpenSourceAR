@@ -1,26 +1,25 @@
 {
-  "name": "open-ar",
-  "description": "Open Source AR  - Bachelor project",
+  "name": "opensourcear",
   "version": "1.0.0",
-  "engines": {
-    "node": "15.x"
-  },
+  "description": "Open Source AR project",
+  "main": "server.js",
   "scripts": {
+    "test": "node server.js",
     "start": "node server.js"
   },
-  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/carob16/OpenSourceAR.git"
   },
+  "keywords": [
+    "sensors",
+    "AR",
+    "openSource"
+  ],
   "author": "Caroline Berg",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/carob16/OpenSourceAR/issues"
   },
-  "homepage": "https://github.com/carob16/OpenSourceAR#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1"
-  }
+  "homepage": "https://github.com/carob16/OpenSourceAR#readme"
 }

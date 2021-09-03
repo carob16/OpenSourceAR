@@ -47,7 +47,6 @@ function handleMotion(event) {
 
 //-----------------------------------------------------------
 function outputTextElement(name, Text) {
-  var div = document.getElementById('output');
   //console.log('Length: ' + div.children.length);
   //console.log(div);
   // console.log('Checking if ' + name + ' exists in ' + div.children);
@@ -59,6 +58,7 @@ function outputTextElement(name, Text) {
 
     // adding content
     newParagraph.textContent = Text;
+    var div = document.getElementById('output');
     div.appendChild(newParagraph);
   } else {
     var oldParagraph = document.getElementById(name);

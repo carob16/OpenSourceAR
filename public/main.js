@@ -48,10 +48,10 @@ function handleMotion(event) {
 //-----------------------------------------------------------
 function outputTextElement(name, Text) {
   var div = document.getElementById('output');
-  console.log('Length: ' + div.children.length);
+  //console.log('Length: ' + div.children.length);
   //console.log(div);
-  console.log('Checking if ' + name + ' exists in ' + div.children);
-  console.log(document.getElementById(name));
+  // console.log('Checking if ' + name + ' exists in ' + div.children);
+  //console.log(document.getElementById(name));
 
   if (document.getElementById(name) == null) {
     const newParagraph = document.createElement('p');

@@ -8,32 +8,13 @@
    <div id="output"></div>
    <div class="slidecontainer">
     <input type="range" min="-180" max="180" value="0" class="slider" id="RotationX">
-  </div>
-
-   <!--script src="../node_modules/three/build/three.js"></script-->   
-   
-   <script type="module">
-  import * as three from '../node_modules/three/build/three.js';
-// const scene = new THREE.Scene();
-// const camera = new THREE.PerspectiveCamera(
-//   75,
-//   window.innerWidth / window.innerHeight,
-//   0.1,
-//   1000
-// );
-
-// const renderer = new THREE.WebGLRenderer();
-// renderer.setSize(window.innerWidth, window.innerHeight);
-// document.body.appendChild(renderer.domElement);
-
-
-
-   </script>
+  </div>  
     
 <script type="module" src="./modules/threeLoader.js"></script>
 
-    <!--script src="./modules/sensorDetection.js"></script-->
-    <script src="./globalVariables.js"></script>
-    <script src="./main.js"></script>
+    <script type="module" src="./modules/DeviceOrientationControls.js"></script>
+    <script type="text/javascript" src="./globalVariables.js"></script>
+    <script type="text/javascript" src="modules/handleOrientation.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
 </body>
 </html>

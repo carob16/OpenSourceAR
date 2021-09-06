@@ -14,6 +14,10 @@ function handleOrientation(event) {
   var y = event.gamma; // In degree in the range [-90,90)
   var z = event.alpha; // In degree in the range [-90,90)
   let DegToRad = Math.PI / 180;
+  //print text
+  outputTextElement('xPosRot', `xPosRot : ${fixedNumber(x)}\n`);
+  outputTextElement('yPosRot', `yPosRot: ${fixedNumber(y)}\n`);
+  outputTextElement('zPosRot', `zPosRot: ${fixedNumber(z)}\n`);
 
   y = y * DegToRad;
   x = x * DegToRad;
@@ -24,15 +28,6 @@ function handleOrientation(event) {
   zPosRot = z;
 
   //updatePosition();
-
-  x = x.toFixed(1);
-  y = y.toFixed(1);
-  z = fixedNumber(z);
-
-  //print text
-  outputTextElement('xPosRot', `xPosRot : ${x}\n`);
-  outputTextElement('yPosRot', `yPosRot: ${y}\n`);
-  outputTextElement('zPosRot', `zPosRot: ${z}\n`);
 }
 
 function handleMotion(event) {

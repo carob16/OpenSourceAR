@@ -59,6 +59,7 @@ function outputTextElement(name, Text) {
     // adding content
     newParagraph.textContent = Text;
     var div = document.getElementById('output');
+    console.log(div);
     div.appendChild(newParagraph);
   } else {
     var oldParagraph = document.getElementById(name);

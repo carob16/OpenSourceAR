@@ -27,7 +27,7 @@ function handleOrientation(event) {
 
   x = x.toFixed(1);
   y = y.toFixed(1);
-  // z = z.toFixed(1);
+  z = fixedNumber(z);
 
   //print text
   outputTextElement('xPosRot', `xPosRot : ${x}\n`);
@@ -40,9 +40,9 @@ function handleMotion(event) {
   var yAcc = event.acceleration.y;
   var zAcc = event.acceleration.z;
 
-  outputTextElement('xAcc', `xAcc : ${xAcc}\n`);
-  outputTextElement('yAcc', `yAcc: ${yAcc}\n`);
-  outputTextElement('zAcc', `zAcc: ${zAcc}\n`);
+  outputTextElement('xAcc', `xAcc : ${fixedNumber(xAcc)}\n`);
+  outputTextElement('yAcc', `yAcc: ${fixedNumber(yAcc)}\n`);
+  outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}\n`);
 }
 
 //-----------------------------------------------------------
@@ -59,10 +59,17 @@ function outputTextElement(name, Text) {
     // adding content
     newParagraph.textContent = Text;
     var div = document.getElementById('output');
-    console.log(div);
     div.appendChild(newParagraph);
   } else {
     var oldParagraph = document.getElementById(name);
     oldParagraph.textContent = Text;
   }
+}
+
+function fixedNumber(number) {
+  if (number != null) {
+    number = number.toFixed(3);
+  }
+  console.log(number);
+  return number;
 }

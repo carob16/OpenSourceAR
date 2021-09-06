@@ -13,13 +13,11 @@ function handleOrientation(event) {
   var x = event.beta; // In degree in the range [-180,180)
   var y = event.gamma; // In degree in the range [-90,90)
   var z = event.alpha; // In degree in the range [-90,90)
-  let scaleY = 1; //garden.clientWidth / 2 / 20;
-  let scaleX = 1; //garden.clientHeight / 2 / 20;
-  //scaleY = scaleY.toFixed(2);
-  //scaleX = scaleX.toFixed(2);
+  let DegToRad = Math.PI / 180;
 
-  y = y * scaleY;
-  x = x * scaleX;
+  y = y * DegToRad;
+  x = x * DegToRad;
+  z = z * DegToRad;
 
   xPosRot = x;
   yPosRot = y;

@@ -6,6 +6,8 @@ window.addEventListener('deviceorientation', handleOrientation, true);
 window.addEventListener('devicemotion', handleMotion, true);
 
 // ----------------FUNCTIONS-------------------------------
+var slider = document.getElementById('RotationX');
+xPosRot = (slider.value * Math.PI) / 180;
 
 function handleOrientation(event) {
   var x = event.beta; // In degree in the range [-180,180)

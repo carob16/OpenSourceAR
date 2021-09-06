@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 app.use(express.static('public'));
+app.use(express.static(path.join(__dirname), { index: 'index.html' }));
+
+app.set('port', process.env.PORT || 8080);
 
 app.set('port', process.env.PORT || 8080);
 

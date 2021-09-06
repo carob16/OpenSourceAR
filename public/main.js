@@ -70,6 +70,5 @@ function fixedNumber(number) {
   if (number != null) {
     number = number.toFixed(3);
   }
-  console.log(number);
   return number;
 }

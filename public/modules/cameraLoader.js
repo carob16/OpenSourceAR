@@ -2,7 +2,7 @@ var video = document.getElementById('video-background');
 
 if (navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices
-    .getUserMedia({ video: true })
+    .getUserMedia({ video: true, facingMode: 'environment' })
     .then(function (stream) {
       video.srcObject = stream;
     })

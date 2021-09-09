@@ -4,13 +4,15 @@ var controls, alpha, beta, gamma;
 
 //---handleMotion.js----------------
 var xAcc, yAcc, zAcc;
-var currentVelX, currentVelY, currentVelZ;
-var prevAccX,
-  prevAccY,
-  prevAccZ,
-  prevVelX,
-  prevVelY,
-  prevVelZ,
-  prevPosX,
-  prevPosY,
-  prevPosZ;
+var currentVelX = 0,
+  currentVelY = 0,
+  currentVelZ = 0;
+var prevAccX = 0,
+  prevAccY = 0,
+  prevAccZ = 0,
+  prevVelX = 0,
+  prevVelY = 0,
+  prevVelZ = 0,
+  prevPosX = 0,
+  prevPosY = 0,
+  prevPosZ = 0;

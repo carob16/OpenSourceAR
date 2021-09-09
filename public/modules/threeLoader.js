@@ -18,7 +18,7 @@ const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
-const helperGeometry = new THREE.BoxGeometry(100, 100, 100, 4, 4, 4);
+const helperGeometry = new THREE.BoxGeometry(150, 150, 150, 5, 5, 5);
 const helperMaterial = new THREE.MeshBasicMaterial({
   color: 0xff00ff,
   wireframe: true,

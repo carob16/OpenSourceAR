@@ -24,6 +24,7 @@ function handleMotion(event) {
       `Calibration started : ${calibrationCount}`
     );
 
+    outputTextElement('calicount', `calicount: ${calibrationCount}`);
     if (calibrationCount >= calibCount) {
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;

@@ -7,17 +7,6 @@ window.addEventListener('devicemotion', handleMotion, true);
 
 // ----------------FUNCTIONS-------------------------------
 
-function handleMotion(event) {
-  var xAcc = event.acceleration.x;
-  var yAcc = event.acceleration.y;
-  var zAcc = event.acceleration.z;
-
-  outputTextElement('xAcc', `xAcc : ${fixedNumber(xAcc)}\n`);
-  outputTextElement('yAcc', `yAcc: ${fixedNumber(yAcc)}\n`);
-  outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}\n`);
-}
-
-//-----------------------------------------------------------
 function outputTextElement(name, Text) {
   //console.log('Length: ' + div.children.length);
   //console.log(div);

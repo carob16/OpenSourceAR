@@ -16,3 +16,12 @@ var prevAccX = 0,
   prevPosX = 0,
   prevPosY = 0,
   prevPosZ = 0;
+
+var zumAccX = [],
+  zumAccY = [],
+  zumAccZ = [];
+var calibrationCount = 0,
+  calibCount = 20;
+let zeroAccelerationX = 0,
+  zeroAccelerationY = 0,
+  zeroAccelerationZ = 0;

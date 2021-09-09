@@ -25,10 +25,6 @@ function handleMotion(event) {
     );
 
     if (calibrationCount >= calibCount) {
-      outputTextElement(
-        'inside function',
-        `inside function: ${calibrationCount}`
-      );
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;
 
@@ -90,9 +86,9 @@ function handleMotion(event) {
       'currentVelX',
       `currentVelX : ${fixedNumber(currentVelX)}\n`
     );
-    outputTextElement('xVel', `xVel : ${fixedNumber(xVel)}\n`);
-    outputTextElement('yVel', `yVel: ${fixedNumber(yVel)}\n`);
-    outputTextElement('zVel', `zVel: ${fixedNumber(zVel)}\n`);
+    outputTextElement('xVel', `xVel : ${fixedNumber(xVel)}`);
+    outputTextElement('yVel', `yVel: ${fixedNumber(yVel)}`);
+    outputTextElement('zVel', `zVel: ${fixedNumber(zVel)}`);
 
     //integrating the vel to get pos
     xDistance =
@@ -101,6 +97,10 @@ function handleMotion(event) {
       prevPosY + (prevVelY * dt + (Math.abs(prevVelY - yVel) / 2) * dt); //*accDirectionY;
     zDistance =
       prevPosZ + (prevVelZ * dt + (Math.abs(prevVelZ - zVel) / 2) * dt); //*accDirectionZ;
+
+    outputTextElement('xDistance', `xDistance : ${fixedNumber(xDistance)}`);
+    outputTextElement('yDistance', `yDistance: ${fixedNumber(yDistance)}`);
+    outputTextElement('zDistance', `zDistance: ${fixedNumber(zDistance)}`);
 
     //Update current velocity
     currentVelX = xVel;

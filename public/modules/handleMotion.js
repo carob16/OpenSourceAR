@@ -13,7 +13,7 @@ function handleMotion(event) {
   outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}\n`);
 
   //Calibrating the zero-offset of the acceleration
-  if (calibrationCount <= calibCount + 1) {
+  if (calibrationCount <= calibCount) {
     zumAccX.unshift(xAcc);
     zumAccY.unshift(yAcc);
     zumAccZ.unshift(zAcc);
@@ -24,7 +24,6 @@ function handleMotion(event) {
       `Calibration started : ${calibrationCount}`
     );
 
-    outputTextElement('calicount', `calicount: ${calibrationCount}`);
     if (calibrationCount >= calibCount) {
       outputTextElement(
         'inside function',

@@ -26,6 +26,10 @@ body {
   min-height: 100%;
 }
 
+p {
+  margin-left: 5vw;
+  color: green;
+}
 .centered {
   position: fixed;
   top: 50%;

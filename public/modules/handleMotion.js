@@ -6,6 +6,8 @@ function handleMotion(event) {
   var dt = event.interval;
   var xVel, yVel, zVel, xDistance, yDistance, zDistance;
 
+  outputTextElement('dt', `dt : ${fixedNumber(dt)}\n`);
+
   outputTextElement('xAcc', `xAcc : ${fixedNumber(xAcc)}\n`);
   outputTextElement('yAcc', `yAcc: ${fixedNumber(yAcc)}\n`);
   outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}\n`);
@@ -44,7 +46,7 @@ function handleMotion(event) {
   prevVelZ = zVel;
 
   //store prev velocity
-  prevPosX = x;
-  prevPosY = y;
-  prevPosZ = z;
+  prevPosX = xDistance;
+  prevPosY = yDistance;
+  prevPosZ = zDistance;
 }

@@ -15,6 +15,10 @@ function handleMotion(event) {
   yVel = currentVelY + (prevAccY * dt + (Math.abs(prevAccY - yAcc) / 2) * dt); // * accDirectionY;
   zVel = currentVelZ + (prevAccZ * dt + (Math.abs(prevAccZ - zAcc) / 2) * dt); // * accDirectionZ;
 
+  outputTextElement(
+    'currentVelX',
+    `currentVelX : ${fixedNumber(currentVelX)}\n`
+  );
   outputTextElement('xVel', `xVel : ${fixedNumber(xVel)}\n`);
   outputTextElement('yVel', `yVel: ${fixedNumber(yVel)}\n`);
   outputTextElement('zVel', `zVel: ${fixedNumber(zVel)}\n`);
@@ -23,4 +27,24 @@ function handleMotion(event) {
   xDistance = prevPosX + (prevVelX * dt + (Math.abs(prevVelX - xVel) / 2) * dt); //*accDirectionX;
   yDistance = prevPosY + (prevVelY * dt + (Math.abs(prevVelY - yVel) / 2) * dt); //*accDirectionY;
   zDistance = prevPosZ + (prevVelZ * dt + (Math.abs(prevVelZ - zVel) / 2) * dt); //*accDirectionZ;
+
+  //Update current velocity
+  currentVelX = xVel;
+  currentVelY = yVel;
+  currentVelZ = zVel;
+
+  //store prev acceleration
+  prevAccX = xAcc;
+  prevAccY = yAcc;
+  prevAccZ = zAcc;
+
+  //store prev velocity
+  prevVelX = xVel;
+  prevVelY = yVel;
+  prevVelZ = zVel;
+
+  //store prev velocity
+  prevPosX = x;
+  prevPosY = y;
+  prevPosZ = z;
 }

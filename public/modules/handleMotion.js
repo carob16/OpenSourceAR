@@ -17,7 +17,6 @@ function handleMotion(event) {
     zumAccX.unshift(xAcc);
     zumAccY.unshift(yAcc);
     zumAccZ.unshift(zAcc);
-    calibrationCount++;
 
     outputTextElement(
       'calibration',
@@ -58,6 +57,7 @@ function handleMotion(event) {
       );
       outputTextElement('zumAccXValue', `zumAccXValue index 0 : ${zumAccX[0]}`);
     }
+    calibrationCount++;
   } else {
     // finding the "zeroAcceleration"
 

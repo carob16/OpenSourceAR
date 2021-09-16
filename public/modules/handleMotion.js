@@ -21,7 +21,7 @@ function handleMotion(event) {
 
     outputTextElement(
       'calibration',
-      `Calibration started - calibrationCount: ${calibrationCount}`
+      `Calibration started - calibrationCount: ${calibrationCount}, zumAccX: ${zumAccX.length}`
     );
 
     if (zumAccX.length >= calibCount) {

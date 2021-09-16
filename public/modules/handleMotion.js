@@ -24,7 +24,7 @@ function handleMotion(event) {
       `Calibration started - calibrationCount: ${calibrationCount}, zumAccX: ${zumAccX.length}`
     );
 
-    if (zumAccX.length >= calibCount) {
+    if (zumAccX.length == calibCount) {
       // if (calibrationCount == calibCount) {
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;
@@ -51,6 +51,8 @@ function handleMotion(event) {
         'zeroAccelerationZ',
         `zeroAccelerationZ : ${zeroAccelerationZ}`
       );
+    } else {
+      outputTextElement('zumAccXValue', `zumAccXValue : ${zumAccX.length}`);
     }
   } else {
     // finding the "zeroAcceleration"

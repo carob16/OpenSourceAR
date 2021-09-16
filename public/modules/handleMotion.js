@@ -35,7 +35,7 @@ function handleMotion(event) {
       zeroAccelerationZ = tmpArraySum / zumAccZ.length;
 
       outputTextElement(
-        'calibration',
+        'calibrationCompleted',
         `Calibration completed : ${calibrationCount}`
       );
       outputTextElement(

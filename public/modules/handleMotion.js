@@ -21,10 +21,11 @@ function handleMotion(event) {
 
     outputTextElement(
       'calibration',
-      `Calibration started : ${calibrationCount}`
+      `Calibration started - calibrationCount: ${calibrationCount}`
     );
-
-    if (calibrationCount > calibCount) {
+  } else {
+    // finding the "zeroAcceleration"
+    if (calibrationCount >= calibCount) {
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;
 
@@ -51,7 +52,7 @@ function handleMotion(event) {
         `zeroAccelerationZ : ${zeroAccelerationZ}`
       );
     }
-  } else {
+
     //Retracting the zeroAcceleration offset
     xAcc -= zeroAccelerationX;
     yAcc -= zeroAccelerationY;

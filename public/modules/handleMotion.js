@@ -24,7 +24,7 @@ function handleMotion(event) {
       `Calibration started - calibrationCount: ${calibrationCount}, zumAccX: ${zumAccX.length}`
     );
 
-    if (zumAccX.length >= calibCount) {
+    if (zumAccX.length > calibCount) {
       // if (calibrationCount == calibCount) {
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;
@@ -52,6 +52,10 @@ function handleMotion(event) {
         `zeroAccelerationZ : ${zeroAccelerationZ}`
       );
     } else {
+      outputTextElement(
+        'zumAccXValue',
+        `zumAccXlength: ${zumAccX.length}, calibcount:${calibCount}`
+      );
       outputTextElement('zumAccXValue', `zumAccXValue index 0 : ${zumAccX[0]}`);
     }
   } else {

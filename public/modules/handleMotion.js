@@ -24,7 +24,7 @@ function handleMotion(event) {
       `Calibration started - calibrationCount: ${calibrationCount}, zumAccX: ${zumAccX.length}`
     );
     //calibCount
-    if (zumAccX.length == 2) {
+    if (zumAccX.length == calibCount) {
       // if (calibrationCount == calibCount) {
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;
@@ -131,4 +131,12 @@ function handleMotion(event) {
     prevPosY = yDistance;
     prevPosZ = zDistance;
   }
+}
+
+function sumArray(arr) {
+  let arraySum = 0;
+  for (let i of arr) {
+    arraySum += i;
+  }
+  return arraySum;
 }

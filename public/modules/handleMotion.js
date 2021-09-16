@@ -13,7 +13,7 @@ function handleMotion(event) {
   outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}\n`);
 
   //Calibrating the zero-offset of the acceleration
-  if (calibrationCount <= calibCount) {
+  if (calibrationCount <= calibCount + 1) {
     zumAccX.unshift(xAcc);
     zumAccY.unshift(yAcc);
     zumAccZ.unshift(zAcc);
@@ -23,9 +23,8 @@ function handleMotion(event) {
       'calibration',
       `Calibration started - calibrationCount: ${calibrationCount}`
     );
-  } else {
-    // finding the "zeroAcceleration"
-    if (calibrationCount >= calibCount) {
+
+    if (calibrationCount == calibCount) {
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;
 
@@ -52,6 +51,8 @@ function handleMotion(event) {
         `zeroAccelerationZ : ${zeroAccelerationZ}`
       );
     }
+  } else {
+    // finding the "zeroAcceleration"
 
     //Retracting the zeroAcceleration offset
     xAcc -= zeroAccelerationX;

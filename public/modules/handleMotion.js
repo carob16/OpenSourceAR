@@ -53,7 +53,7 @@ function handleMotion(event) {
       );
     } else {
       outputTextElement(
-        'zumAccXValue',
+        'checkInElse',
         `zumAccXlength: ${zumAccX.length}, calibcount:${calibCount}`
       );
       outputTextElement('zumAccXValue', `zumAccXValue index 0 : ${zumAccX[0]}`);

@@ -52,7 +52,7 @@ function handleMotion(event) {
         `zeroAccelerationZ : ${zeroAccelerationZ}`
       );
     } else {
-      outputTextElement('zumAccXValue', `zumAccXValue : ${zumAccX.length}`);
+      outputTextElement('zumAccXValue', `zumAccXValue index 0 : ${zumAccX[0]}`);
     }
   } else {
     // finding the "zeroAcceleration"

@@ -143,6 +143,29 @@ function handleMotion(event) {
     outputTextElement('yVel', `yVel: ${fixedNumber(yVel)}`);
     outputTextElement('zVel', `zVel: ${fixedNumber(zVel)}`);
 
+    //Set velocity to zero if acceleration is zero for a period of time
+    if (xAcc == 0) {
+      zeroCuntX++;
+      if (zeroCuntX >= zeroCountLimit) {
+        xVel = 0;
+        debug.textContent += `xVel is set to zero due to count limit\n`;
+      }
+    }
+    if (yAcc == 0) {
+      zeroCuntY++;
+      if (zeroCuntY >= zeroCountLimit) {
+        yVel = 0;
+        debug.textContent += `xVel is set to zero due to count limit\n`;
+      }
+    }
+    if (zAcc == 0) {
+      zeroCuntZ++;
+      if (zeroCuntZ >= zeroCountLimit) {
+        zVel = 0;
+        debug.textContent += `xVel is set to zero due to count limit\n`;
+      }
+    }
+
     //integrating the vel to get pos
     xDistance =
       prevPosX +

@@ -31,3 +31,15 @@ let zeroAccelerationX = 0,
 let accDirectionX = 1,
   accDirectionY = 1,
   accDirectionZ = 1;
+
+//Threshold and lowpassfilter
+
+let lowPassAccX = 0,
+  lowPassAccY = 0,
+  lowPassAccZ = 0,
+  lowPassLenght = 5;
+let lowPassArrayX = [],
+  lowPassArrayY = [],
+  lowPassArrayZ = [],
+  tmpArraySum = 0,
+  accTreshold = 0.04;

@@ -60,24 +60,45 @@ function handleMotion(event) {
     zAcc -= zeroAccelerationZ;
 
     //Adding a low-pass filter of the acceleration
-    // if (lowPassArrayX.length < lowPassLenght) {
-    //   lowPassArrayX.unshift(xAcc);
-    // } else {
-    //   lowPassArrayX.pop();
-    //   lowPassArrayX.unshift(xAcc);
-    // }
-    // if (lowPassArrayY.length < lowPassLenght) {
-    //   lowPassArrayY.unshift(yAcc);
-    // } else {
-    //   lowPassArrayY.pop();
-    //   lowPassArrayY.unshift(yAcc);
-    // }
-    // if (lowPassArrayZ.length < lowPassLenght) {
-    //   lowPassArrayZ.unshift(zAcc);
-    // } else {
-    //   lowPassArrayZ.pop();
-    //   lowPassArrayZ.unshift(zAcc);
-    // }
+    if (lowPassArrayX.length < lowPassLenght) {
+      lowPassArrayX.unshift(xAcc);
+    } else {
+      lowPassArrayX.pop();
+      lowPassArrayX.unshift(xAcc);
+    }
+    if (lowPassArrayY.length < lowPassLenght) {
+      lowPassArrayY.unshift(yAcc);
+    } else {
+      lowPassArrayY.pop();
+      lowPassArrayY.unshift(yAcc);
+    }
+    if (lowPassArrayZ.length < lowPassLenght) {
+      lowPassArrayZ.unshift(zAcc);
+    } else {
+      lowPassArrayZ.pop();
+      lowPassArrayZ.unshift(zAcc);
+    }
+
+    //finding the mean value of the last measurements stored in lowPassArray
+    tmpArraySum = sumArray(lowPassArrayX);
+    xAcc = tmpArraySum / lowPassArrayX.length;
+
+    tmpArraySum = sumArray(lowPassArrayY);
+    yAcc = tmpArraySum / lowPassArrayY.length;
+
+    tmpArraySum = sumArray(lowPassArrayZ);
+    zAcc = tmpArraySum / lowPassArrayZ.length;
+
+    //discard all accceleration data that is between a low threshold - noise
+    if (Math.abs(xAcc) <= accTreshold) {
+      xAcc = 0;
+    }
+    if (Math.abs(yAcc) <= accTreshold) {
+      yAcc = 0;
+    }
+    if (Math.abs(zAcc) <= accTreshold) {
+      zAcc = 0;
+    }
 
     //set direction from the velocity
 

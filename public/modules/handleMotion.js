@@ -145,11 +145,14 @@ function handleMotion(event) {
 
     //integrating the vel to get pos
     xDistance =
-      prevPosX + (prevVelX * dt + (Math.abs(prevVelX - xVel) / 2) * dt); //*accDirectionX;
+      prevPosX +
+      (prevVelX * dt + (Math.abs(prevVelX - xVel) / 2) * dt) * accDirectionX;
     yDistance =
-      prevPosY + (prevVelY * dt + (Math.abs(prevVelY - yVel) / 2) * dt); //*accDirectionY;
+      prevPosY +
+      (prevVelY * dt + (Math.abs(prevVelY - yVel) / 2) * dt) * accDirectionY;
     zDistance =
-      prevPosZ + (prevVelZ * dt + (Math.abs(prevVelZ - zVel) / 2) * dt); //*accDirectionZ;
+      prevPosZ +
+      (prevVelZ * dt + (Math.abs(prevVelZ - zVel) / 2) * dt) * accDirectionZ;
 
     outputTextElement('xDistance', `xDistance : ${fixedNumber(xDistance)}`);
     outputTextElement('yDistance', `yDistance: ${fixedNumber(yDistance)}`);

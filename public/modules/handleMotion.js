@@ -80,28 +80,25 @@ function handleMotion(event) {
     // }
 
     //set direction from the velocity
-    outputTextElement('xVel1', `xVel1: ${xVel}`);
-    outputTextElement('yVel1', `yVel1: ${yVel}`);
-    outputTextElement('zVel1', `zVel1: ${zVel}`);
 
-    if (xAcc >= 0) {
+    if (currentVelX >= 0) {
       accDirectionX = 1;
       outputTextElement('accDirectionX', `accDirectionX: ${accDirectionX}`);
-    } else if (xAcc < 0) {
+    } else if (currentVelX < 0) {
       accDirectionX = -1;
       outputTextElement('accDirectionX', `accDirectionX: ${accDirectionX}`);
     }
-    if (yAcc >= 0) {
+    if (currentVelY >= 0) {
       accDirectionY = 1;
       outputTextElement('accDirectionY', `accDirectionY: ${accDirectionY}`);
-    } else if (yAcc < 0) {
+    } else if (currentVelY < 0) {
       accDirectionY = -1;
       outputTextElement('accDirectionY', `accDirectionY: ${accDirectionY}`);
     }
-    if (zAcc >= 0) {
+    if (currentVelZ >= 0) {
       accDirectionZ = 1;
       outputTextElement('accDirectionZ', `accDirectionZ: ${accDirectionZ}`);
-    } else if (zAcc < 0) {
+    } else if (currentVelZ < 0) {
       accDirectionZ = -1;
       outputTextElement('accDirectionZ', `accDirectionZ: ${accDirectionZ}`);
     }

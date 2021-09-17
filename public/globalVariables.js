@@ -17,6 +17,7 @@ var prevAccX = 0,
   prevPosY = 0,
   prevPosZ = 0;
 
+//Calibration
 var zumAccX = [],
   zumAccY = [],
   zumAccZ = [];
@@ -25,3 +26,8 @@ var calibrationCount = 0,
 let zeroAccelerationX = 0,
   zeroAccelerationY = 0,
   zeroAccelerationZ = 0;
+
+//Directions
+let accDirectionX = 1,
+  accDirectionY = 1,
+  accDirectionZ = 1;

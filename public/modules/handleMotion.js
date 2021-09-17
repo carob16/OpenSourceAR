@@ -86,10 +86,40 @@ function handleMotion(event) {
     //   lowPassArrayZ.unshift(zAcc);
     // }
 
+    //set direction from the velocity
+
+    if (xVel >= 0) {
+      accDirectionX = 1;
+      outputTextElement('accDirectionX', `accDirectionX: ${accDirectionX}`);
+    } else if (xVel < 0) {
+      accDirectionX = -1;
+      outputTextElement('accDirectionX', `accDirectionX: ${accDirectionX}`);
+    }
+    if (yVel >= 0) {
+      accDirectionY = 1;
+      outputTextElement('accDirectionY', `accDirectionY: ${accDirectionY}`);
+    } else if (yVel < 0) {
+      accDirectionY = -1;
+      outputTextElement('accDirectionY', `accDirectionY: ${accDirectionY}`);
+    }
+    if (zVel >= 0) {
+      accDirectionZ = 1;
+      outputTextElement('accDirectionZ', `accDirectionZ: ${accDirectionZ}`);
+    } else if (zVel < 0) {
+      accDirectionZ = -1;
+      outputTextElement('accDirectionZ', `accDirectionZ: ${accDirectionZ}`);
+    }
+
     //integrating the acc to get vel
-    xVel = currentVelX + (prevAccX * dt + (Math.abs(prevAccX - xAcc) / 2) * dt); // * accDirectionX;
-    yVel = currentVelY + (prevAccY * dt + (Math.abs(prevAccY - yAcc) / 2) * dt); // * accDirectionY;
-    zVel = currentVelZ + (prevAccZ * dt + (Math.abs(prevAccZ - zAcc) / 2) * dt); // * accDirectionZ;
+    xVel =
+      currentVelX +
+      (prevAccX * dt + (Math.abs(prevAccX - xAcc) / 2) * dt) * accDirectionX;
+    yVel =
+      currentVelY +
+      (prevAccY * dt + (Math.abs(prevAccY - yAcc) / 2) * dt) * accDirectionY;
+    zVel =
+      currentVelZ +
+      (prevAccZ * dt + (Math.abs(prevAccZ - zAcc) / 2) * dt) * accDirectionZ;
 
     outputTextElement(
       'currentVelX',

@@ -80,9 +80,9 @@ function handleMotion(event) {
     // }
 
     //set direction from the velocity
-    outputTextElement('xVel', `xVel: ${xVel}`);
-    outputTextElement('yVel', `yVel: ${yVel}`);
-    outputTextElement('zVel', `zVel: ${zVel}`);
+    outputTextElement('xVel1', `xVel1: ${xVel}`);
+    outputTextElement('yVel1', `yVel1: ${yVel}`);
+    outputTextElement('zVel1', `zVel1: ${zVel}`);
 
     if (xVel >= 0) {
       accDirectionX = 1;

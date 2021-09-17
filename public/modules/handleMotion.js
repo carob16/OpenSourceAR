@@ -84,24 +84,24 @@ function handleMotion(event) {
     outputTextElement('yVel1', `yVel1: ${yVel}`);
     outputTextElement('zVel1', `zVel1: ${zVel}`);
 
-    if (xVel >= 0) {
+    if (xAcc >= 0) {
       accDirectionX = 1;
       outputTextElement('accDirectionX', `accDirectionX: ${accDirectionX}`);
-    } else if (xVel < 0) {
+    } else if (xAcc < 0) {
       accDirectionX = -1;
       outputTextElement('accDirectionX', `accDirectionX: ${accDirectionX}`);
     }
-    if (yVel >= 0) {
+    if (yAcc >= 0) {
       accDirectionY = 1;
       outputTextElement('accDirectionY', `accDirectionY: ${accDirectionY}`);
-    } else if (yVel < 0) {
+    } else if (yAcc < 0) {
       accDirectionY = -1;
       outputTextElement('accDirectionY', `accDirectionY: ${accDirectionY}`);
     }
-    if (zVel >= 0) {
+    if (zAcc >= 0) {
       accDirectionZ = 1;
       outputTextElement('accDirectionZ', `accDirectionZ: ${accDirectionZ}`);
-    } else if (zVel < 0) {
+    } else if (zAcc < 0) {
       accDirectionZ = -1;
       outputTextElement('accDirectionZ', `accDirectionZ: ${accDirectionZ}`);
     }

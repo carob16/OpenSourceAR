@@ -3,14 +3,10 @@ function handleMotion(event) {
   var xAcc = event.acceleration.x;
   var yAcc = event.acceleration.y;
   var zAcc = event.acceleration.z;
-  var dt = event.interval;
+  //var dt = event.interval;
   var xVel, yVel, zVel, xDistance, yDistance, zDistance;
 
-  outputTextElement('dt', `dt : ${fixedNumber(dt)}\n`);
-
-  outputTextElement('xAcc', `xAcc : ${fixedNumber(xAcc)}\n`);
-  outputTextElement('yAcc', `yAcc: ${fixedNumber(yAcc)}\n`);
-  outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}\n`);
+  // outputTextElement('dt', `dt : ${fixedNumber(dt)}\n`);
 
   //Calibrating the zero-offset of the acceleration
   if (calibrationCount <= calibCount + 1 && calibrateAcceleration == 1) {
@@ -153,10 +149,6 @@ function handleMotion(event) {
     zVel =
       prevVelZ + prevAccZ * dt + (Math.abs(zAcc - prevAccZ) / 2) * dt * zDir;
 
-    outputTextElement('xVel', `xVel : ${fixedNumber(xVel)}`);
-    outputTextElement('yVel', `yVel: ${fixedNumber(yVel)}`);
-    outputTextElement('zVel', `zVel: ${fixedNumber(zVel)}`);
-
     //Set velocity to zero if acceleration is zero for a period of time
     if (xAcc == 0) {
       zeroCountX++;
@@ -254,6 +246,14 @@ function handleMotion(event) {
     outputTextElement('xDistance', `xDistance : ${fixedNumber(xDistance)}`);
     outputTextElement('yDistance', `yDistance: ${fixedNumber(yDistance)}`);
     outputTextElement('zDistance', `zDistance: ${fixedNumber(zDistance)}`);
+
+    outputTextElement('xVel', `xVel : ${fixedNumber(xVel)}`);
+    outputTextElement('yVel', `yVel: ${fixedNumber(yVel)}`);
+    outputTextElement('zVel', `zVel: ${fixedNumber(zVel)}`);
+
+    outputTextElement('xAcc', `xAcc : ${fixedNumber(xAcc)}`);
+    outputTextElement('yAcc', `yAcc: ${fixedNumber(yAcc)}`);
+    outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}`);
 
     //Storing data to the csvData[]
     let tmpData = [dt, xAcc];

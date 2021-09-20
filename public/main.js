@@ -29,7 +29,7 @@ function outputTextElement(name, Text) {
 
 function fixedNumber(number) {
   if (number != null) {
-    number = number.toFixed(3);
+    number = number.toFixed(4);
   }
   return number;
 }

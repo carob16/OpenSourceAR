@@ -195,17 +195,16 @@ function handleMotion(event) {
     //integrating the vel to get pos
     xDistance =
       prevPosX +
-      (prevVelX * dt + (Math.abs(prevVelX - xVel) / 2) * dt) * accDirectionX;
+      prevVelX * dt +
+      (Math.abs(xVel - prevVelX) / 2) * dt * accDirectionX;
     yDistance =
       prevPosY +
-      (prevVelY * dt + (Math.abs(prevVelY - yVel) / 2) * dt) * accDirectionY;
+      prevVelY * dt +
+      (Math.abs(yVel - prevVelY) / 2) * dt * accDirectionY;
     zDistance =
       prevPosZ +
-      (prevVelZ * dt + (Math.abs(prevVelZ - zVel) / 2) * dt) * accDirectionZ;
-
-    outputTextElement('xDistance', `xDistance : ${fixedNumber(xDistance)}`);
-    outputTextElement('yDistance', `yDistance: ${fixedNumber(yDistance)}`);
-    outputTextElement('zDistance', `zDistance: ${fixedNumber(zDistance)}`);
+      prevVelZ * dt +
+      (Math.abs(zVel - prevVelZ) / 2) * dt * accDirectionZ;
 
     //Update current velocity
     currentVelX = xVel;
@@ -226,6 +225,16 @@ function handleMotion(event) {
     prevPosX = xDistance;
     prevPosY = yDistance;
     prevPosZ = zDistance;
+
+    //scaling to get readable numbers
+
+    xDistance *= accelerationScale;
+    yDistance *= accelerationScale;
+    zDistance *= accelerationScale;
+
+    outputTextElement('xDistance', `xDistance : ${fixedNumber(xDistance)}`);
+    outputTextElement('yDistance', `yDistance: ${fixedNumber(yDistance)}`);
+    outputTextElement('zDistance', `zDistance: ${fixedNumber(zDistance)}`);
 
     //Storing data to the csvData[]
     // let tmpData = [dt, xAcc];

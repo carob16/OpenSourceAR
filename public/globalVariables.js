@@ -1,7 +1,6 @@
 var csvData = [];
 var video = document.getElementById('video-background');
 var container = document.getElementById('container');
-let canvas = document.getElementById('canvas');
 
 //-----------DeviceOrientationcontrols and handleOrientation------------
 var xPosRot, yPosRot, zPosRot;
@@ -30,7 +29,8 @@ var calibrationCount = 0,
   calibCount = 20;
 let zeroAccelerationX = 0,
   zeroAccelerationY = 0,
-  zeroAccelerationZ = 0;
+  zeroAccelerationZ = 0,
+  accelerationScale = 0.0005;
 
 //Directions
 let accDirectionX = 1,

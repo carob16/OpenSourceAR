@@ -145,8 +145,9 @@ function handleMotion(event) {
 
     //Set velocity to zero if acceleration is zero for a period of time
     if (xAcc == 0) {
-      zeroCuntX++;
-      if (zeroCuntX >= zeroCountLimit) {
+      zeroCountX++;
+      outputTextElement('zeroCountX', ``);
+      if (zeroCountX >= zeroCountLimit) {
         xVel = 0;
         outputTextElement(
           'zeroCountX',
@@ -155,8 +156,9 @@ function handleMotion(event) {
       }
     }
     if (yAcc == 0) {
-      zeroCuntY++;
-      if (zeroCuntY >= zeroCountLimit) {
+      zeroCountY++;
+      outputTextElement('zeroCountY', ``);
+      if (zeroCountY >= zeroCountLimit) {
         yVel = 0;
         outputTextElement(
           'zeroCountY',
@@ -165,8 +167,9 @@ function handleMotion(event) {
       }
     }
     if (zAcc == 0) {
-      zeroCuntZ++;
-      if (zeroCuntZ >= zeroCountLimit) {
+      zeroCountZ++;
+      outputTextElement('zeroCountZ', ``);
+      if (zeroCountZ >= zeroCountLimit) {
         zVel = 0;
         outputTextElement(
           'zeroCountZ',

@@ -44,7 +44,7 @@ let lowPassArrayX = [],
   tmpArraySum = 0,
   accTreshold = 0.04;
 
-let zeroCuntX = 0,
-  zeroCuntY = 0,
-  zeroCuntZ = 0,
+let zeroCountX = 0,
+  zeroCountY = 0,
+  zeroCountZ = 0,
   zeroCountLimit = 3;

@@ -154,6 +154,7 @@ function handleMotion(event) {
 
       if (zeroCountX >= zeroCountLimit) {
         xVel = 0;
+        prevVelX = 0;
         outputTextElement(
           'zeroCountX',
           `xVel is set to zero due to count limit`
@@ -168,6 +169,7 @@ function handleMotion(event) {
 
       if (zeroCountY >= zeroCountLimit) {
         yVel = 0;
+        prevVelY = 0;
         outputTextElement(
           'zeroCountY',
           `yVel is set to zero due to count limit`
@@ -182,6 +184,7 @@ function handleMotion(event) {
 
       if (zeroCountZ >= zeroCountLimit) {
         zVel = 0;
+        prevVelZ = 0;
         outputTextElement(
           'zeroCountZ',
           `zVel is set to zero due to count limit`
@@ -214,9 +217,9 @@ function handleMotion(event) {
     xDistance =
       prevPosX + prevVelX * dt + (Math.abs(xVel - prevVelX) / 2) * dt * xDir;
     yDistance =
-      prevPosY + prevVelY * dt + (Math.abs(yVel - prevVelY) / 2) * dt * yDir;
+      prevPosY + prevVelY * dt + ((Math.abs(yVel - prevVelY) * dt) / 2) * yDir;
     zDistance =
-      prevPosZ + prevVelZ * dt + (Math.abs(zVel - prevVelZ) / 2) * dt * zDir;
+      prevPosZ + prevVelZ * dt + ((Math.abs(zVel - prevVelZ) * dt) / 2) * zDir;
 
     //Update current velocity
     currentVelX = xVel;

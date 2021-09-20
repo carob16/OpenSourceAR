@@ -26,6 +26,12 @@ body {
   min-height: 100%;
 }
 
+button {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
 p {
   margin-left: 5vw;
   color: green;

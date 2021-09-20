@@ -221,6 +221,11 @@ function handleMotion(event) {
     prevPosX = xDistance;
     prevPosY = yDistance;
     prevPosZ = zDistance;
+
+    //Storing data to the csvData[]
+    let tmpData = [dt, xAcc];
+    csvData += tmpData.join(',');
+    csvData += '\n';
   }
 }
 

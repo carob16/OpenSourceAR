@@ -1,3 +1,5 @@
+var csvData;
+
 //-----------DeviceOrientationcontrols and handleOrientation------------
 var xPosRot, yPosRot, zPosRot;
 var controls, alpha, beta, gamma;

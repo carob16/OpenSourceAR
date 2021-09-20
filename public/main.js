@@ -33,3 +33,21 @@ function fixedNumber(number) {
   }
   return number;
 }
+
+function downloadCSV(filename) {
+  console.log('buttin clicked');
+  let csvFile;
+  let downloadLink;
+
+  csvFile = new Blob([csvData], { type: 'text/csv' });
+
+  downloadLink = document.createElement('a');
+  downloadLink.download = filename;
+  downloadLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvData);
+  downloadLink.target = '_blank';
+  downloadLink.style.display = 'none';
+
+  document.body.appendChild(downloadLink);
+
+  downloadLink.click();
+}

@@ -148,21 +148,30 @@ function handleMotion(event) {
       zeroCuntX++;
       if (zeroCuntX >= zeroCountLimit) {
         xVel = 0;
-        debug.textContent += `xVel is set to zero due to count limit\n`;
+        outputTextElement(
+          'zeroCountX',
+          `xVel is set to zero due to count limit`
+        );
       }
     }
     if (yAcc == 0) {
       zeroCuntY++;
       if (zeroCuntY >= zeroCountLimit) {
         yVel = 0;
-        debug.textContent += `xVel is set to zero due to count limit\n`;
+        outputTextElement(
+          'zeroCountY',
+          `yVel is set to zero due to count limit`
+        );
       }
     }
     if (zAcc == 0) {
       zeroCuntZ++;
       if (zeroCuntZ >= zeroCountLimit) {
         zVel = 0;
-        debug.textContent += `xVel is set to zero due to count limit\n`;
+        outputTextElement(
+          'zeroCountZ',
+          `zVel is set to zero due to count limit`
+        );
       }
     }
 

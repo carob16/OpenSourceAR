@@ -146,7 +146,7 @@ function handleMotion(event) {
     //Set velocity to zero if acceleration is zero for a period of time
     if (xAcc == 0) {
       zeroCountX++;
-      outputTextElement('zeroCountX', ``);
+
       if (zeroCountX >= zeroCountLimit) {
         xVel = 0;
         outputTextElement(
@@ -154,10 +154,13 @@ function handleMotion(event) {
           `xVel is set to zero due to count limit`
         );
       }
+    } else {
+      zeroCountX = 0;
+      outputTextElement('zeroCountX', ' ');
     }
     if (yAcc == 0) {
       zeroCountY++;
-      outputTextElement('zeroCountY', ``);
+
       if (zeroCountY >= zeroCountLimit) {
         yVel = 0;
         outputTextElement(
@@ -165,10 +168,13 @@ function handleMotion(event) {
           `yVel is set to zero due to count limit`
         );
       }
+    } else {
+      zeroCountY = 0;
+      outputTextElement('zeroCountY', ' ');
     }
     if (zAcc == 0) {
       zeroCountZ++;
-      outputTextElement('zeroCountZ', ``);
+
       if (zeroCountZ >= zeroCountLimit) {
         zVel = 0;
         outputTextElement(
@@ -176,6 +182,9 @@ function handleMotion(event) {
           `zVel is set to zero due to count limit`
         );
       }
+    } else {
+      zeroCountZ = 0;
+      outputTextElement('zeroCountZ', ' ');
     }
 
     //integrating the vel to get pos

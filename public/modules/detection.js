@@ -1,0 +1,1 @@
+let frame = video.srcObject;

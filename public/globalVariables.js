@@ -1,4 +1,5 @@
-var csvData;
+var csvData = [];
+var video = document.getElementById('video-background');
 
 //-----------DeviceOrientationcontrols and handleOrientation------------
 var xPosRot, yPosRot, zPosRot;

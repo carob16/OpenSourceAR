@@ -23,7 +23,7 @@ function handleMotion(event) {
       'calibration',
       `Calibration started - calibrationCount: ${calibrationCount}, zumAccX: ${zumAccX.length}`
     );
-    //calibCount
+    // finding the "zeroAcceleration"
     if (zumAccX.length == calibCount) {
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;
@@ -52,7 +52,12 @@ function handleMotion(event) {
       );
     }
   } else {
-    // finding the "zeroAcceleration"
+    let t = new Date();
+
+    if (timeArray.length >= 2) {
+      timeArray.pop();
+    }
+    timeArray.unshift(t.getTime());
 
     //Retracting the zeroAcceleration offset
     xAcc -= zeroAccelerationX;

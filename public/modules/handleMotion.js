@@ -13,7 +13,7 @@ function handleMotion(event) {
   outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}\n`);
 
   //Calibrating the zero-offset of the acceleration
-  if (calibrationCount <= calibCount + 1) {
+  if (calibrationCount <= calibCount + 1 && calibrateAcceleration == 1) {
     zumAccX.unshift(xAcc);
     zumAccY.unshift(yAcc);
     zumAccZ.unshift(zAcc);
@@ -24,7 +24,7 @@ function handleMotion(event) {
       `Calibration started - calibrationCount: ${calibrationCount}, zumAccX: ${zumAccX.length}`
     );
     // finding the "zeroAcceleration"
-    if (zumAccX.length == calibCount) {
+    if (calibrationCount >= calibCount) {
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;
 
@@ -52,12 +52,18 @@ function handleMotion(event) {
       );
     }
   } else {
-    // let t = new Date();
+    let t = new Date();
 
-    // if (timeArray.length >= 2) {
-    //   timeArray.pop();
-    // }
-    // timeArray.unshift(t.getTime());
+    if (timeArray.length >= 2) {
+      timeArray.pop();
+    }
+    timeArray.unshift(t.getTime());
+
+    //----------------------------------------------------
+    //---------FLOATING CALIB----------------------------
+    //---------------------------------------------------
+
+    let dt = timeArray[0] - timeArray[1];
 
     //Retracting the zeroAcceleration offset
     xAcc -= zeroAccelerationX;
@@ -105,45 +111,48 @@ function handleMotion(event) {
       zAcc = 0;
     }
 
+    //Discarding all accelerations that is noise/drift
+    if (xAcc == prevAccX) {
+      zeroCuntX++;
+      if (zeroCuntX >= zeroCountLimit) {
+        xAcc = 0;
+      }
+    } else {
+      zeroCuntX = 0;
+    }
+
     //set direction from the acceleration
 
     if (xAcc >= 0) {
       xDir = 1;
       outputTextElement('xDir', `xDir: ${xDir}`);
-    } else if (xAcc < 0) {
+    } else {
       xDir = -1;
       outputTextElement('xDir', `xDir: ${xDir}`);
     }
     if (yAcc >= 0) {
       yDir = 1;
       outputTextElement('yDir', `yDir: ${yDir}`);
-    } else if (yAcc < 0) {
+    } else {
       yDir = -1;
       outputTextElement('yDir', `yDir: ${yDir}`);
     }
     if (zAcc >= 0) {
       zDir = 1;
       outputTextElement('zDir', `zDir: ${zDir}`);
-    } else if (zAcc < 0) {
+    } else {
       zDir = -1;
       outputTextElement('zDir', `zDir: ${zDir}`);
     }
 
     //integrating the acc to get vel
     xVel =
-      currentVelX +
-      (prevAccX * dt + (Math.abs(prevAccX - xAcc) / 2) * dt) * xDir;
+      prevVelX + prevAccX * dt + (Math.abs(xAcc - prevAccX) / 2) * dt * xDir;
     yVel =
-      currentVelY +
-      (prevAccY * dt + (Math.abs(prevAccY - yAcc) / 2) * dt) * yDir;
+      prevVelY + prevAccY * dt + (Math.abs(yAcc - prevAccY) / 2) * dt * yDir;
     zVel =
-      currentVelZ +
-      (prevAccZ * dt + (Math.abs(prevAccZ - zAcc) / 2) * dt) * zDir;
+      prevVelZ + prevAccZ * dt + (Math.abs(zAcc - prevAccZ) / 2) * dt * zDir;
 
-    outputTextElement(
-      'currentVelX',
-      `currentVelX : ${fixedNumber(currentVelX)}\n`
-    );
     outputTextElement('xVel', `xVel : ${fixedNumber(xVel)}`);
     outputTextElement('yVel', `yVel: ${fixedNumber(yVel)}`);
     outputTextElement('zVel', `zVel: ${fixedNumber(zVel)}`);
@@ -217,14 +226,9 @@ function handleMotion(event) {
     xDistance =
       prevPosX + prevVelX * dt + (Math.abs(xVel - prevVelX) / 2) * dt * xDir;
     yDistance =
-      prevPosY + prevVelY * dt + ((Math.abs(yVel - prevVelY) * dt) / 2) * yDir;
+      prevPosY + prevVelY * dt + (Math.abs(yVel - prevVelY) / 2) * dt * yDir;
     zDistance =
-      prevPosZ + prevVelZ * dt + ((Math.abs(zVel - prevVelZ) * dt) / 2) * zDir;
-
-    //Update current velocity
-    currentVelX = xVel;
-    currentVelY = yVel;
-    currentVelZ = zVel;
+      prevPosZ + prevVelZ * dt + (Math.abs(zVel - prevVelZ) / 2) * dt * zDir;
 
     //store prev acceleration
     prevAccX = xAcc;
@@ -252,9 +256,9 @@ function handleMotion(event) {
     outputTextElement('zDistance', `zDistance: ${fixedNumber(zDistance)}`);
 
     //Storing data to the csvData[]
-    // let tmpData = [dt, xAcc];
-    // csvData += tmpData.join(',');
-    // csvData += '\n';
+    let tmpData = [dt, xAcc];
+    csvData += tmpData.join(',');
+    csvData += '\n';
   }
 }
 

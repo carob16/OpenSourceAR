@@ -1,4 +1,3 @@
-var csvData = [];
 var video = document.getElementById('video-background');
 var container = document.getElementById('container');
 
@@ -7,6 +6,8 @@ var xPosRot, yPosRot, zPosRot;
 var controls, alpha, beta, gamma;
 
 //---handleMotion.js----------------
+let csvData = 'Time,xAcc' + '\n';
+
 var xAcc, yAcc, zAcc;
 var currentVelX = 0,
   currentVelY = 0,
@@ -30,7 +31,8 @@ var calibrationCount = 0,
 let zeroAccelerationX = 0,
   zeroAccelerationY = 0,
   zeroAccelerationZ = 0,
-  accelerationScale = 0.0005;
+  accelerationScale = 0.0005,
+  calibrateAcceleration = true;
 
 //Directions
 let xDir = 1,
@@ -53,3 +55,6 @@ let zeroCountX = 0,
   zeroCountY = 0,
   zeroCountZ = 0,
   zeroCountLimit = 3;
+
+let timeArray = [0, 0],
+  dt = 0;

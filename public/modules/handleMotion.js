@@ -52,12 +52,12 @@ function handleMotion(event) {
       );
     }
   } else {
-    let t = new Date();
+    // let t = new Date();
 
-    if (timeArray.length >= 2) {
-      timeArray.pop();
-    }
-    timeArray.unshift(t.getTime());
+    // if (timeArray.length >= 2) {
+    //   timeArray.pop();
+    // }
+    // timeArray.unshift(t.getTime());
 
     //Retracting the zeroAcceleration offset
     xAcc -= zeroAccelerationX;
@@ -228,9 +228,9 @@ function handleMotion(event) {
     prevPosZ = zDistance;
 
     //Storing data to the csvData[]
-    let tmpData = [dt, xAcc];
-    csvData += tmpData.join(',');
-    csvData += '\n';
+    // let tmpData = [dt, xAcc];
+    // csvData += tmpData.join(',');
+    // csvData += '\n';
   }
 }
 

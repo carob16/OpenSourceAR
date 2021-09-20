@@ -1,6 +1,5 @@
 import * as THREE from '../../node_modules/three/build/three.module.js';
 import { DeviceOrientationControls } from './DeviceOrientationControls.js';
-var container = document.getElementById('container');
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(

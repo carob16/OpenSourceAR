@@ -17,6 +17,13 @@ body {
   min-width: 100%;
   min-height: 100%;
 }
+#canvas {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
 
 #output {
   position: fixed;
@@ -27,7 +34,7 @@ body {
 }
 
 button {
-  position: relative;
+  position: fixed;
   margin-left: 10px;
   margin-top: 10px;
 }

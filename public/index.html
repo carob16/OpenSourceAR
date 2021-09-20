@@ -8,10 +8,10 @@
   
   <div id="container">
       <video id="video-background" autoplay="true"></video>
-
+    <canvas id="canvas" width="100%" height="100%"></canvas>
     </div>
     
-<div id="output" ><p id="pageTitle">My OPEN SOURCE AR_TEST PAGE </p>  </div>
+<div id="output" ><button id="cit" onclick="shoot()" class="button">Capture</button><p id="pageTitle">My OPEN SOURCE AR_TEST PAGE </p>  </div>
 <!--button id="downloadCSV" onclick="downloadCSV('accelerationData.csv')">Download CSV</button-->
 <script type="text/javascript" src="./modules/cameraLoader.js"></script>  
 <script type="module" src="./modules/threeLoader.js"></script>
@@ -19,6 +19,8 @@
     <script type="text/javascript" src="./globalVariables.js"></script>
     <script type="text/javascript" src="modules/handleOrientation.js"></script>
     <script type="text/javascript" src="modules/handleMotion.js"></script>
+   <script type="text/javascript" src="modules/detection2.js"></script> <script type="text/javascript" src="modules/detection.js"></script>
+    
     <script type="text/javascript" src="./main.js"></script>
    
 </body>

@@ -105,40 +105,40 @@ function handleMotion(event) {
       zAcc = 0;
     }
 
-    //set direction from the velocity
+    //set direction from the acceleration
 
-    if (currentVelX >= 0) {
-      accDirectionX = 1;
-      outputTextElement('accDirectionX', `accDirectionX: ${accDirectionX}`);
-    } else if (currentVelX < 0) {
-      accDirectionX = -1;
-      outputTextElement('accDirectionX', `accDirectionX: ${accDirectionX}`);
+    if (xAcc >= 0) {
+      xDir = 1;
+      outputTextElement('xDir', `xDir: ${xDir}`);
+    } else if (xAcc < 0) {
+      xDir = -1;
+      outputTextElement('xDir', `xDir: ${xDir}`);
     }
-    if (currentVelY >= 0) {
-      accDirectionY = 1;
-      outputTextElement('accDirectionY', `accDirectionY: ${accDirectionY}`);
-    } else if (currentVelY < 0) {
-      accDirectionY = -1;
-      outputTextElement('accDirectionY', `accDirectionY: ${accDirectionY}`);
+    if (yAcc >= 0) {
+      yDir = 1;
+      outputTextElement('yDir', `yDir: ${yDir}`);
+    } else if (yAcc < 0) {
+      yDir = -1;
+      outputTextElement('yDir', `yDir: ${yDir}`);
     }
-    if (currentVelZ >= 0) {
-      accDirectionZ = 1;
-      outputTextElement('accDirectionZ', `accDirectionZ: ${accDirectionZ}`);
-    } else if (currentVelZ < 0) {
-      accDirectionZ = -1;
-      outputTextElement('accDirectionZ', `accDirectionZ: ${accDirectionZ}`);
+    if (zAcc >= 0) {
+      zDir = 1;
+      outputTextElement('zDir', `zDir: ${zDir}`);
+    } else if (zAcc < 0) {
+      zDir = -1;
+      outputTextElement('zDir', `zDir: ${zDir}`);
     }
 
     //integrating the acc to get vel
     xVel =
       currentVelX +
-      (prevAccX * dt + (Math.abs(prevAccX - xAcc) / 2) * dt) * accDirectionX;
+      (prevAccX * dt + (Math.abs(prevAccX - xAcc) / 2) * dt) * xDir;
     yVel =
       currentVelY +
-      (prevAccY * dt + (Math.abs(prevAccY - yAcc) / 2) * dt) * accDirectionY;
+      (prevAccY * dt + (Math.abs(prevAccY - yAcc) / 2) * dt) * yDir;
     zVel =
       currentVelZ +
-      (prevAccZ * dt + (Math.abs(prevAccZ - zAcc) / 2) * dt) * accDirectionZ;
+      (prevAccZ * dt + (Math.abs(prevAccZ - zAcc) / 2) * dt) * zDir;
 
     outputTextElement(
       'currentVelX',
@@ -192,19 +192,31 @@ function handleMotion(event) {
       outputTextElement('zeroCountZ', ' ');
     }
 
+    //Check direction of current velocity
+
+    if (xVel >= 0) {
+      xDir = 1;
+    } else {
+      xDir = -1;
+    }
+    if (yVel >= 0) {
+      yDir = 1;
+    } else {
+      yDir = -1;
+    }
+    if (zVel >= 0) {
+      zDir = 1;
+    } else {
+      zDir = -1;
+    }
+
     //integrating the vel to get pos
     xDistance =
-      prevPosX +
-      prevVelX * dt +
-      (Math.abs(xVel - prevVelX) / 2) * dt * accDirectionX;
+      prevPosX + prevVelX * dt + (Math.abs(xVel - prevVelX) / 2) * dt * xDir;
     yDistance =
-      prevPosY +
-      prevVelY * dt +
-      (Math.abs(yVel - prevVelY) / 2) * dt * accDirectionY;
+      prevPosY + prevVelY * dt + (Math.abs(yVel - prevVelY) / 2) * dt * yDir;
     zDistance =
-      prevPosZ +
-      prevVelZ * dt +
-      (Math.abs(zVel - prevVelZ) / 2) * dt * accDirectionZ;
+      prevPosZ + prevVelZ * dt + (Math.abs(zVel - prevVelZ) / 2) * dt * zDir;
 
     //Update current velocity
     currentVelX = xVel;

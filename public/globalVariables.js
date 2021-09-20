@@ -33,9 +33,9 @@ let zeroAccelerationX = 0,
   accelerationScale = 0.0005;
 
 //Directions
-let accDirectionX = 1,
-  accDirectionY = 1,
-  accDirectionZ = 1;
+let xDir = 1,
+  yDir = 1,
+  zDir = 1;
 
 //Threshold and lowpassfilter
 

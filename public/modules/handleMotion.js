@@ -119,7 +119,7 @@ function handleMotion(event) {
 
     //set direction from the acceleration
 
-    if (xAcc = 0) {
+    if (xAcc == 0) {
       xDir = 0;
       outputTextElement('xDir', `xDir: ${xDir}`);
     } else if(xAcc<0){
@@ -129,7 +129,7 @@ function handleMotion(event) {
       xDir = 1;
       outputTextElement('xDir', `xDir: ${xDir}`);
     }
-    if (yAcc = 0) {
+    if (yAcc == 0) {
       yDir = 0;
       outputTextElement('yDir', `yDir: ${yDir}`);
     } else if(yAcc<0){
@@ -139,7 +139,7 @@ function handleMotion(event) {
     yDir = 1;
     outputTextElement('yDir', `yDir: ${yDir}`);
   }
-    if (zAcc = 0) {
+    if (zAcc == 0) {
       zDir = 0;
       outputTextElement('zDir', `zDir: ${zDir}`);
     } else if(zAcc<0){
@@ -208,21 +208,23 @@ function handleMotion(event) {
 
     //Check direction of current velocity
 
-    if (xVel >= 0) {
-      xDir = 1;
-    } else {
+    if (xVel == 0) {
+      xDir = 0;
+    } else if(xVel<0){
       xDir = -1;
-    }
-    if (yVel >= 0) {
-      yDir = 1;
-    } else {
+    }else{ xDir = 1;}
+
+    if (yVel == 0) {
+      yDir = 0;
+    } else if(yVel<0){
       yDir = -1;
-    }
-    if (zVel >= 0) {
-      zDir = 1;
-    } else {
+    }else{ yDir = 1;}
+
+    if (zVel == 0) {
+      zDir = 0;
+    } else if(zVel<0){
       zDir = -1;
-    }
+    }else{zDir=1};
 
     //integrating the vel to get pos
     xDistance =

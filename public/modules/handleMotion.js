@@ -119,27 +119,37 @@ function handleMotion(event) {
 
     //set direction from the acceleration
 
-    if (xAcc >= 0) {
-      xDir = 1;
+    if (xAcc = 0) {
+      xDir = 0;
       outputTextElement('xDir', `xDir: ${xDir}`);
-    } else {
+    } else if(xAcc<0){
       xDir = -1;
       outputTextElement('xDir', `xDir: ${xDir}`);
+    }else{
+      xDir = 1;
+      outputTextElement('xDir', `xDir: ${xDir}`);
     }
-    if (yAcc >= 0) {
-      yDir = 1;
+    if (yAcc = 0) {
+      yDir = 0;
       outputTextElement('yDir', `yDir: ${yDir}`);
-    } else {
+    } else if(yAcc<0){
       yDir = -1;
       outputTextElement('yDir', `yDir: ${yDir}`);
-    }
-    if (zAcc >= 0) {
-      zDir = 1;
+    }else{
+    yDir = 1;
+    outputTextElement('yDir', `yDir: ${yDir}`);
+  }
+    if (zAcc = 0) {
+      zDir = 0;
       outputTextElement('zDir', `zDir: ${zDir}`);
-    } else {
+    } else if(zAcc<0){
       zDir = -1;
       outputTextElement('zDir', `zDir: ${zDir}`);
+    }else{
+      zDir = 1;
+      outputTextElement('yDir', `yDir: ${zDir}`);
     }
+    
 
     //integrating the acc to get vel
     xVel =

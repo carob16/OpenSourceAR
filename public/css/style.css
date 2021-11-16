@@ -2,28 +2,32 @@ body {
   margin: 0;
 }
 
+#container{
+}
 #container video {
-  position: fixed;
+  position: relative;
   right: 0;
   bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  object-fit: none;
+ 
 }
-
 #container canvas {
   position: fixed;
+  left: 0;
+  top: 0;
+}
+img{
+}
+canvas{
+}
+/*#container canvas {
+  position: relative;
   right: 0;
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-}
-#canvas {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-}
+}*/
+
 
 #output {
   position: fixed;

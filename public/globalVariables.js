@@ -58,3 +58,6 @@ let zeroCountX = 0,
 
 let timeArray = [0, 0],
   dt = 0;
+
+  //OpenCV
+  var openCvStatus = "Loading";

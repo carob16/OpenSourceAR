@@ -1,9 +1,10 @@
-if (navigator.mediaDevices.getUserMedia) {
+if (navigator.mediaDevices.getUserMedia|| navigator.webkit.getUserMedia) {
   navigator.mediaDevices
 
-    .getUserMedia({ video: { facingMode: { ideal: 'environment' } } })
-    .then(function (stream) {
+    .getUserMedia({ video:{ width:{ ideal: 1280}, height:{ideal: 720}, facingMode: { ideal: 'environment' }} })
+    .then(function (stream) {    
       video.srcObject = stream;
+
     })
     .catch(function (err) {
       var videoElement = document.getElementById('video-background');

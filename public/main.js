@@ -8,10 +8,6 @@ window.addEventListener('devicemotion', handleMotion, true);
 // ----------------FUNCTIONS-------------------------------
 
 function outputTextElement(name, Text) {
-  //console.log('Length: ' + div.children.length);
-  //console.log(div);
-  // console.log('Checking if ' + name + ' exists in ' + div.children);
-  //console.log(document.getElementById(name));
 
   if (document.getElementById(name) == null) {
     const newParagraph = document.createElement('p');

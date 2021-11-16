@@ -35,9 +35,9 @@ let zeroAccelerationX = 0,
   calibrateAcceleration = true;
 
 //Directions
-let xDir = 1,
-  yDir = 1,
-  zDir = 1;
+let xDir = 0,
+  yDir = 0,
+  zDir = 0;
 
 //Threshold and lowpassfilter
 

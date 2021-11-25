@@ -67,6 +67,7 @@ function handleMotion(event) {
     zAcc -= zeroAccelerationZ;
 
     //Adding a low-pass filter of the acceleration
+    if(lowpassFilter==true){
     if (lowPassArrayX.length < lowPassLenght) {
       lowPassArrayX.unshift(xAcc);
     } else {
@@ -95,8 +96,10 @@ function handleMotion(event) {
 
     tmpArraySum = sumArray(lowPassArrayZ);
     zAcc = tmpArraySum / lowPassArrayZ.length;
+  }
 
     //discard all accceleration data that is between a low threshold - noise
+    if(removeNoise == true){
     if (Math.abs(xAcc) <= accTreshold) {
       xAcc = 0;
     }
@@ -106,7 +109,7 @@ function handleMotion(event) {
     if (Math.abs(zAcc) <= accTreshold) {
       zAcc = 0;
     }
-
+}
     //Discarding all accelerations that is noise/drift
     if (xAcc == prevAccX) {
       zeroCuntX++;

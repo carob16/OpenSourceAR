@@ -34,7 +34,7 @@ let zeroAccelerationX = 0,
   accelerationScale = 0.0005,
   calibrateAcceleration = true;
 
-var removeNoise = false;
+var removeNoise = true;
 
 //Directions
 let xDir = 0,
@@ -42,7 +42,7 @@ let xDir = 0,
   zDir = 0;
 
 //Threshold and lowpassfilter
-let lowpassFilter = false;
+let lowpassFilter = true;
 
 let lowPassAccX = 0,
   lowPassAccY = 0,

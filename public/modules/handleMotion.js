@@ -263,9 +263,9 @@ function handleMotion(event) {
 
     //scaling to get readable numbers
 
-    xDistance *= accelerationScale;
-    yDistance *= accelerationScale;
-    zDistance *= accelerationScale;
+    // xDistance *= accelerationScale;
+    // yDistance *= accelerationScale;
+    // zDistance *= accelerationScale;
 
     outputTextElement('xDistance', `xDistance : ${fixedNumber(xDistance)}`);
     outputTextElement('yDistance', `yDistance: ${fixedNumber(yDistance)}`);

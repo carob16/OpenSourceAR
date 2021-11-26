@@ -154,13 +154,6 @@ function handleMotion(event) {
     }
     
 
-    //integrating the acc to get vel
-    xVel =
-      prevVelX + prevAccX * dt + (Math.abs(xAcc - prevAccX) / 2) * dt * xDir;
-    yVel =
-      prevVelY + prevAccY * dt + (Math.abs(yAcc - prevAccY) / 2) * dt * yDir;
-    zVel =
-      prevVelZ + prevAccZ * dt + (Math.abs(zAcc - prevAccZ) / 2) * dt * zDir;
 
     //Set velocity to zero if acceleration is zero for a period of time
     if (xAcc == 0) {
@@ -208,6 +201,15 @@ function handleMotion(event) {
       zeroCountZ = 0;
       outputTextElement('zeroCountZ', ' ');
     }
+
+    
+    //integrating the acc to get vel
+    xVel =
+      prevVelX + prevAccX * dt + (Math.abs(xAcc - prevAccX) / 2) * dt * xDir;
+    yVel =
+      prevVelY + prevAccY * dt + (Math.abs(yAcc - prevAccY) / 2) * dt * yDir;
+    zVel =
+      prevVelZ + prevAccZ * dt + (Math.abs(zAcc - prevAccZ) / 2) * dt * zDir;
 
     //Check direction of current velocity
 

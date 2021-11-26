@@ -6,7 +6,7 @@ var xPosRot, yPosRot, zPosRot;
 var controls, alpha, beta, gamma;
 
 //---handleMotion.js----------------
-let csvData = 'Time,xAcc' + '\n';
+let csvData = 'Time,xAcc,xVel,xPos' + '\n';
 
 var xAcc, yAcc, zAcc;
 var currentVelX = 0,

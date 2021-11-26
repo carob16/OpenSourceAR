@@ -239,6 +239,12 @@ function handleMotion(event) {
     zDistance =
       prevPosZ + prevVelZ * dt + (Math.abs(zVel - prevVelZ) / 2) * dt * zDir;
 
+
+    //Storing data to the csvData[]
+    let tmpData = [dt, xAcc,xVel,xDistance];
+    csvData += tmpData.join(',');
+    csvData += '\n';
+
     //store prev acceleration
     prevAccX = xAcc;
     prevAccY = yAcc;
@@ -272,10 +278,7 @@ function handleMotion(event) {
     outputTextElement('yAcc', `yAcc: ${fixedNumber(yAcc)}`);
     outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}`);
 
-    //Storing data to the csvData[]
-    let tmpData = [dt, xAcc];
-    csvData += tmpData.join(',');
-    csvData += '\n';
+
   }
 }
 

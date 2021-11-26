@@ -60,6 +60,7 @@ function handleMotion(event) {
     //---------------------------------------------------
 
     let dt = timeArray[0] - timeArray[1];
+    dt= dt/1000;
 
     //Retracting the zeroAcceleration offset
     xAcc -= zeroAccelerationX;

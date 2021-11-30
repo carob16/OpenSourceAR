@@ -3,6 +3,15 @@ function handleMotion(event) {
   var xAcc = event.acceleration.x;
   var yAcc = event.acceleration.y;
   var zAcc = event.acceleration.z;
+  var xRotRate = event.rotationRate.alpha;
+  var yRotRate = event.rotationRate.beta;
+  var zRotRate = event.rotationRate.gamma;
+  
+  outputTextElement(
+    'rotationRate',
+    `RotationRate-alpha: ${xRotRate},rotationRate.beta: ${yRotRate},rotationRate.gamma: ${zRotRate} `
+  );
+
   //var dt = event.interval;
   var xVel, yVel, zVel, xDistance, yDistance, zDistance;
 

@@ -1,7 +1,7 @@
 //using the data from Accelerometer to get vel and measure travel distance
 function handleMotion(event) {
   if(event.acceleration.x == null){    
-    outputTextElement('sensorstatus-gyro','sensorstatus-acc: cannot read sensor'); 
+    outputTextElement('sensorstatus-acc','sensorstatus-acc: cannot read sensor'); 
     }else{
   outputTextElement('sensorstatus-acc','sensorstatus-acc: Reading');
   var xAcc = event.acceleration.x;

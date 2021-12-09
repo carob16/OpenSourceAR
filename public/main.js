@@ -15,7 +15,7 @@ clickY = eY;
   
 }
 
-
+// For printing data in functions for testing on smartphone
 function outputTextElement(name, Text) {
 
   if (document.getElementById(name) == null) {
@@ -32,6 +32,7 @@ function outputTextElement(name, Text) {
   }
 }
 
+// formatting numbers to fixed format before printing
 function fixedNumber(number) {
   if (number != null) {
     number = number.toFixed(4);
@@ -39,6 +40,7 @@ function fixedNumber(number) {
   return number;
 }
 
+//Downloading CSV-file
 function downloadCSV(filename) {
   console.log('buttin clicked');
   let csvFile;
@@ -58,13 +60,14 @@ function downloadCSV(filename) {
 }
 
 //-------------------EVENTS-------------------------------------
-
+//DeviceOrientationEvent
 if (window.DeviceOrientationEvent) {
   window.addEventListener('deviceorientation', handleOrientation, true);
   outputTextElement('sensorstatus-gyro','sensorstatus-gyro: Eventlistener created');
 }else{
   outputTextElement('sensorstatus-gyro','Cannot read DeviceOrientation-data. Please check your sensor-permissions in settings before reloading the page');
 }
+//DeviceMotionEvent
 if(window.DeviceMotionEvent){
   window.addEventListener('devicemotion', handleMotion, true);
   outputTextElement('sensorstatus-acc','sensorstatus-acc: Eventlistener created');

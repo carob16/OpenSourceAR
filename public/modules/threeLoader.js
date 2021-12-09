@@ -41,4 +41,6 @@ function animate() {
   controls.update();
   renderer.render(scene, camera);
 }
+
+//-----------start animations-------------
 animate();

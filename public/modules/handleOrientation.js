@@ -1,6 +1,6 @@
 function handleOrientation(event) {
   if(event.beta == null){    
-  outputTextElement('sensorstatus-gyro','sensorstatus-gyro: Cannot read sensor. Please allow this page to use motionsensors in your webpage-settings'); 
+  outputTextElement('sensorstatus-gyro','sensorstatus-gyro: Cannot read sensor. Please allow this page to use motionsensors in your website-settings'); 
   }else{outputTextElement('sensorstatus-gyro','sensorstatus-gyro: Reading');
   var x = event.beta; // In degree in the range [-180,180]
   var y = event.gamma; // In degree in the range [-90,90]

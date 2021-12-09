@@ -7,8 +7,6 @@ app.use(express.static(path.join(__dirname), { index: 'index.html' }));
 
 app.set('port', process.env.PORT || 8080);
 
-app.set('port', process.env.PORT || 8080);
-
 app.get('/', function (req, res) {
   res.send('index.html');
 });

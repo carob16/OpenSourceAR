@@ -1,17 +1,3 @@
-
-//-------------------EVENTS-------------------------------------
-
-  if (window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', handleOrientation, true);
-  }else{
-    outputTextElement('sensorstatus-acc','Cannot read DeviceOrientation-data. Please check your sensor-permissions in settings before reloading the page');
-  }
-  if(window.DeviceMotionEvent){
-    window.addEventListener('devicemotion', handleMotion, true);
-  }else{
-    outputTextElement('sensorstatus-acc','Cannot read DeviceMotion-data. Please check your sensor-permissions in settings before reloading the page');
-  }
-
 var edgeDetectionCanvasDiv = document.getElementById('output'); 
 //edgeDetectionCanvasDiv.addEventListener('mousemove', function getMousePosition(e){console.log(e.clientX, e.clientY);}, true);
 edgeDetectionCanvasDiv.addEventListener('click', function getSquarePosition(e){
@@ -71,3 +57,18 @@ function downloadCSV(filename) {
   downloadLink.click();
 }
 
+//-------------------EVENTS-------------------------------------
+
+if (window.DeviceOrientationEvent) {
+  window.addEventListener('deviceorientation', handleOrientation, true);
+  outputTextElement('sensorstatus-gyro','sensorstatus-gyro: Eventlistener created');
+}else{
+  outputTextElement('sensorstatus-gyro','Cannot read DeviceOrientation-data. Please check your sensor-permissions in settings before reloading the page');
+}
+if(window.DeviceMotionEvent){
+  window.addEventListener('devicemotion', handleMotion, true);
+  outputTextElement('sensorstatus-acc','sensorstatus-acc: Eventlistener created');
+
+}else{
+  outputTextElement('sensorstatus-acc','Cannot read DeviceMotion-data. Please check your sensor-permissions in settings before reloading the page');
+}

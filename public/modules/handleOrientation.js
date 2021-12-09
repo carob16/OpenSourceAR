@@ -1,4 +1,5 @@
 function handleOrientation(event) {
+  outputTextElement('sensorstatus-gyro','sensorstatus-gyro: Reading');
   var x = event.beta; // In degree in the range [-180,180]
   var y = event.gamma; // In degree in the range [-90,90]
   var z = event.alpha; // In degree in the range [-90,90]

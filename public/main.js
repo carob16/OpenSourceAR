@@ -30,8 +30,8 @@ gyroscope = new Gyroscope();
       }
   });
 
-    accelerometer.addEventListener('devicemotion', handleMotion, true);
-   gyroscope.addEventListener('deviceorientation', handleOrientation, true);
+    accelerometer.addEventListener('reading', handleMotion, true);
+   gyroscope.addEventListener('reading', handleOrientation, true);
     accelerometer.start();
     gyroscope.start();
 }catch(error){

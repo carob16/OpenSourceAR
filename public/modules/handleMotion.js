@@ -1,5 +1,6 @@
 //using the data from Accelerometer to get vel and measure travel distance
 function handleMotion(event) {
+  outputTextElement('sensorstatus-acc','sensorstatus-acc: Reading');
   var xAcc = event.acceleration.x;
   var yAcc = event.acceleration.y;
   var zAcc = event.acceleration.z;

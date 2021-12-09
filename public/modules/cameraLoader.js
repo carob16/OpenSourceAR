@@ -1,7 +1,7 @@
 if (navigator.mediaDevices.getUserMedia|| navigator.webkit.getUserMedia) {
   navigator.mediaDevices
 
-    .getUserMedia({ video:{ width:{ ideal: 1280}, height:{ideal: 720}, facingMode: { ideal: 'environment' }} })
+    .getUserMedia({ video:{width:{ ideal: 1920}, height:{ideal: 1080}, facingMode: { ideal: 'environment' }} })
     .then(function (stream) {    
       video.srcObject = stream;
 

@@ -1,7 +1,7 @@
 //using the data from Accelerometer to get vel and measure travel distance
 function handleMotion(event) {
   if(event.acceleration.x == null){    
-    outputTextElement('sensorstatus-acc','sensorstatus-acc: cannot read sensor'); 
+    outputTextElement('sensorstatus-acc','sensorstatus-acc: cannot read sensor. Please allow this page to use "Motionsensors" in your webpage-settings');
     }else{
   outputTextElement('sensorstatus-acc','sensorstatus-acc: Reading');
   var xAcc = event.acceleration.x;

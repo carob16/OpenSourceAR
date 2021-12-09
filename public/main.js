@@ -1,19 +1,34 @@
 var edgeDetectionCanvasDiv = document.getElementById('output'); 
 //edgeDetectionCanvasDiv.addEventListener('mousemove', function getMousePosition(e){console.log(e.clientX, e.clientY);}, true);
-edgeDetectionCanvasDiv.addEventListener('click', function getSquarePosition(e){
-  detectCorner(e.clientX, e.clientY);}, true);
+edgeDetectionCanvasDiv.addEventListener('click', function (e){
+  clickX = e.clientX;
+  clickY = e.clientY;
+
+  if(corners.length<=3){
+
+    var object ={};
+    object.x =clickX;
+    object.y =clickY;
+    object.id = "snapshot_"+corners.length;
+
+    var snapshotCanvas = document.createElement("canvas");
+    snapshotCanvas.id = "snapshot_"+corners.length;
+    snapshotCanvas.style.position = "fixed";
+    snapshotCanvas.style.border = "red 1px";
+    snapshotCanvas.width = snapshotWitdh ;
+    snapshotCanvas.height = snapshotHeight ;
+    snapshotCanvas.style.left = clickX-snapshotWitdh/2 + "px";
+    snapshotCanvas.style.top = clickY-snapshotHeight/2 + "px";
+    // smallCanvas.style.overflow = "hidden";
+    document.body.appendChild(snapshotCanvas);
+    corners.push(object);
+    }
+});
 // document.getElementById("slider_1").addEventListener("change", "onSliderChange()");
 // document.getElementById("slider_2").addEventListener("change", "onSliderChange()");
 // document.getElementById("slider_3").addEventListener("change", "onSliderChange()");
 
 // ----------------FUNCTIONS-------------------------------
-
-function detectCorner(eX,eY){
-clickX = eX;
-clickY = eY;
-//edgeDetection();
-  
-}
 
 // For printing data in functions for testing on smartphone
 function outputTextElement(name, Text) {

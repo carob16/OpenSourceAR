@@ -64,3 +64,13 @@ let timeArray = [0, 0],
 
   //OpenCV
   var openCvStatus = "Loading";
+  var snapshotWitdh = 40;
+  var snapshotHeight = 40;
+
+  //Corner Detection
+
+var clickX = 50;
+var clickY = 50;
+var corners = [];
+
+  

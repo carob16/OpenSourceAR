@@ -81,7 +81,7 @@ async function edgeDetection() {
         // //console.log(result.maxLoc);  
         // cv.imshow("edgeDetectionCanvas", harrisCorner_2);  
         // let dst = grey;
-        // cv.HoughLines(srcCanny, houghLine, 3, Math.PI/180, 150);
+        //cv.HoughLines(srcCanny, houghLine, 3, Math.PI/180, 150);
         // houghLine = cv_houghLine(srcCanny);
         // let p1 = new cv.Point(100,100);
         // let p2 = new cv.Point(500,100);
@@ -156,7 +156,7 @@ async function edgeDetection() {
         srcCanny.delete();
         houghLine.delete();
         cornerMat.delete();
-    }, 2);
+    }, 42);
 }catch{return;}
 }
 

@@ -1,22 +1,40 @@
 body {
   margin: 0;
+  overflow: hidden;
 }
 
-#container{
+/* Style page content */
+
+#checkboxes{
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 160px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.37); /* Black */
+    
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    padding-left: 5px;
+  
+}
+
+#container {
+  object-fit: contain;
+ 
 }
 #container video {
   position: fixed;
-  right: 0;
-  bottom: 0;
-  object-fit: none;
+  left: 0;
+  top: 0;
+  object-fit:none;
  
 }
 #container canvas {
   position: fixed;
   left: 0;
   top: 0;
-}
-img{
 }
 canvas{
   position: fixed;
@@ -34,10 +52,8 @@ canvas{
 
 #output {
   position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  left: 0;
+  top: 0;  
 }
 
 button {
@@ -47,13 +63,6 @@ button {
 }
 
 p {
-  margin-left: 5vw;
+  margin-left: 10vw;
   color: green;
-}
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
 }

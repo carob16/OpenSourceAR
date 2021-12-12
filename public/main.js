@@ -1,34 +1,18 @@
-var edgeDetectionCanvasDiv = document.getElementById('output'); 
-//edgeDetectionCanvasDiv.addEventListener('mousemove', function getMousePosition(e){console.log(e.clientX, e.clientY);}, true);
-edgeDetectionCanvasDiv.addEventListener('click', function (e){
-  clickX = e.clientX;
-  clickY = e.clientY;
-
-  if(corners.length<=3){
-
-    var object ={};
-    object.x =clickX;
-    object.y =clickY;
-    object.id = "snapshot_"+corners.length;
-
-    var snapshotCanvas = document.createElement("canvas");
-    snapshotCanvas.id = "snapshot_"+corners.length;
-    snapshotCanvas.style.position = "fixed";
-    snapshotCanvas.style.border = "red 1px";
-    snapshotCanvas.width = snapshotWitdh ;
-    snapshotCanvas.height = snapshotHeight ;
-    snapshotCanvas.style.left = clickX-snapshotWitdh/2 + "px";
-    snapshotCanvas.style.top = clickY-snapshotHeight/2 + "px";
-    // smallCanvas.style.overflow = "hidden";
-    document.body.appendChild(snapshotCanvas);
-    corners.push(object);
-    }
-});
-// document.getElementById("slider_1").addEventListener("change", "onSliderChange()");
-// document.getElementById("slider_2").addEventListener("change", "onSliderChange()");
-// document.getElementById("slider_3").addEventListener("change", "onSliderChange()");
-
 // ----------------FUNCTIONS-------------------------------
+
+function enableDisableEdgeDetection(element){
+  enableEdgeDetection = element.checked;
+   
+}
+function enableDisableThreeLoader(element){
+  enableThreeLoader = element.checked;
+}
+function enableDisableAccelerometer(element){
+  enableAccelerometer = element.checked;
+}
+function enableDisableMagnetometer(element){
+  enableMagnetometer= element.checked;
+}
 
 // For printing data in functions for testing on smartphone
 function outputTextElement(name, Text) {
@@ -57,7 +41,6 @@ function fixedNumber(number) {
 
 //Downloading CSV-file
 function downloadCSV(filename) {
-  console.log('buttin clicked');
   let csvFile;
   let downloadLink;
 
@@ -74,13 +57,26 @@ function downloadCSV(filename) {
   downloadLink.click();
 }
 
+
+function toggleFullscreen() {
+  const btn = document.getElementById("fullscreenBtn");
+  if (document.fullscreenElement) {
+    document.exitFullscreen()
+      .then(() => {btn.innerHTML="Full screen";})
+      .catch((err) => console.error(err))
+  } else {
+    document.documentElement.requestFullscreen();
+    btn.innerHTML="Exit Full screen";
+  }
+}
 //-------------------EVENTS-------------------------------------
+
 //DeviceOrientationEvent
 if (window.DeviceOrientationEvent) {
   window.addEventListener('deviceorientation', handleOrientation, true);
-  outputTextElement('sensorstatus-gyro','sensorstatus-gyro: Eventlistener created');
+  outputTextElement('sensorstatus-magno','sensorstatus-magno: Eventlistener created');
 }else{
-  outputTextElement('sensorstatus-gyro','Cannot read DeviceOrientation-data. Please check your sensor-permissions in settings before reloading the page');
+  outputTextElement('sensorstatus-magno','Cannot read orientation data. Please check your sensor-permissions in settings before reloading the page');
 }
 //DeviceMotionEvent
 if(window.DeviceMotionEvent){
@@ -88,5 +84,9 @@ if(window.DeviceMotionEvent){
   outputTextElement('sensorstatus-acc','sensorstatus-acc: Eventlistener created');
 
 }else{
-  outputTextElement('sensorstatus-acc','Cannot read DeviceMotion-data. Please check your sensor-permissions in settings before reloading the page');
+  outputTextElement('sensorstatus-acc','Cannot read acceleration-data. Please check your sensor-permissions in settings before reloading the page');
 }
+
+//----------------------------------------------------------------------
+setVideoStream();
+

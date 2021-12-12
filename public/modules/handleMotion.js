@@ -1,7 +1,10 @@
 //using the data from Accelerometer to get vel and measure travel distance
 function handleMotion(event) {
+  if(!enableAccelerometer){return;}else{
+
   if(event.acceleration.x == null){    
-    outputTextElement('sensorstatus-acc','sensorstatus-acc: cannot read sensor. Please allow this page to use "Motionsensors" in your website-settings');
+    outputTextElement('sensorstatus-acc',
+    'sensorstatus-acc: cannot read sensor. Please allow this page to use "Motionsensors" in your website-settings');
     }else{
   outputTextElement('sensorstatus-acc','sensorstatus-acc: Reading');
   var xAcc = event.acceleration.x;
@@ -266,12 +269,6 @@ function handleMotion(event) {
     prevPosY = yDistance;
     prevPosZ = zDistance;
 
-    //scaling to get readable numbers
-
-    // xDistance *= accelerationScale;
-    // yDistance *= accelerationScale;
-    // zDistance *= accelerationScale;
-
     outputTextElement('xDistance', `xDistance : ${fixedNumber(xDistance)}`);
     outputTextElement('yDistance', `yDistance: ${fixedNumber(yDistance)}`);
     outputTextElement('zDistance', `zDistance: ${fixedNumber(zDistance)}`);
@@ -286,7 +283,7 @@ function handleMotion(event) {
 
 
   }
-}}
+}}}
 
 function sumArray(arr) {
   let arraySum = 0;

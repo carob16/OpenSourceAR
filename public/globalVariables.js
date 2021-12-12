@@ -1,6 +1,11 @@
 var video = document.getElementById('video-background');
 var container = document.getElementById('container');
 
+//-----------EnableDisable statuses------------
+var enableEdgeDetection = false;
+var enableThreeLoader =false;
+var enableAccelerometer =false;
+
 //-----------DeviceOrientationcontrols and handleOrientation------------
 var xPosRot, yPosRot, zPosRot;
 var controls, alpha, beta, gamma;
@@ -45,12 +50,12 @@ let xDir = 0,
 let lowpassFilter = true;
 
 let lowPassAccX = 0,
-  lowPassAccY = 0,
-  lowPassAccZ = 0,
-  lowPassLenght = 5;
+lowPassAccY = 0,
+lowPassAccZ = 0,
+lowPassLenght = 5;
 let lowPassArrayX = [],
-  lowPassArrayY = [],
-  lowPassArrayZ = [],
+lowPassArrayY = [],
+lowPassArrayZ = [],
   tmpArraySum = 0,
   accTreshold = 0.04;
 

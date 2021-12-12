@@ -1,4 +1,5 @@
 /**
+ * Origin:
  * W3C Device Orientation control (http://w3c.github.io/deviceorientation/spec-source-orientation.html)
  */
 
@@ -9,10 +10,6 @@ import {
   Quaternion,
   Vector3,
 } from '../../node_modules/three/build/three.module.js';
-
-/**
- * W3C Device Orientation control (http://w3c.github.io/deviceorientation/spec-source-orientation.html)
- */
 
 var DeviceOrientationControls = function (object) {
   var scope = this;

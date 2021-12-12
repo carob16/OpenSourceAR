@@ -1,17 +1,43 @@
  
-     function opencvcheck() {
-         openCvStatus = "Ready"
+function opencvcheck() {
+        openCvStatus = "Ready"
         outputTextElement(
-    'openCvStatus',
-    `OpenCvStatus: ${openCvStatus}`
-  );
-  edgeDetection();
-       }
+        'openCvStatus',
+        `OpenCvStatus: ${openCvStatus}`
+    );
+        edgeDetection();
+}
 
-//-------------Variables----------------------
+//-------------Click EVENT----------------------
 
+var topDiv = document.getElementById('output'); 
+topDiv.addEventListener('click', function (e){
+    
+  clickX = e.clientX;
+  clickY = e.clientY;
 
+  if(corners.length<=3 && enableEdgeDetection){
 
+    var object ={};
+    object.x =clickX;
+    object.y =clickY;
+    object.id = "snapshot_"+corners.length;
+
+    var snapshotCanvas = document.createElement("canvas");
+    snapshotCanvas.id = "snapshot_"+corners.length;
+    snapshotCanvas.style.position = "fixed";
+    snapshotCanvas.style.border = "red 1px";
+    snapshotCanvas.width = snapshotWitdh ;
+    snapshotCanvas.height = snapshotHeight ;
+    snapshotCanvas.style.left = clickX-snapshotWitdh/2 + "px";
+    snapshotCanvas.style.top = clickY-snapshotHeight/2 + "px";
+    // smallCanvas.style.overflow = "hidden";
+    document.body.appendChild(snapshotCanvas);
+    corners.push(object);
+    }
+});
+
+var edgeDetectionInterval;
 
 // https://towardsdatascience.com/real-time-edge-detection-in-browser-ee4d61ba05ef
        // Function to draw a video frame onto the canvas
@@ -38,10 +64,14 @@ function drawCanvas() {
 }
 
 async function edgeDetection() {
-    try{
-     
+    // if(enableEdgeDetection==false){console.log(enableEdgeDetection);
+    //     clearInterval(edgeDetectionInterval);
+    //     console.log(edgeDetectionInterval);
+    //         return;}else{
+        try{
     // Set interval to repeat function every 42 milliseconds
-    setInterval(() => {
+  setInterval(() => {
+            if(enableEdgeDetection){
         // Draw frame to the intermediate canvas
          drawCanvas();
         
@@ -96,6 +126,7 @@ async function edgeDetection() {
      for(var i = 0; i<corners.length; i++){
             var id = "snapshot_"+i;
         var smallCanvas = document.getElementById(id);
+        smallCanvas.style.display = "block";
 
         var sx = corners[i].x-snapshotWitdh/2;
         var sy = corners[i].y-snapshotHeight/2;
@@ -109,6 +140,8 @@ async function edgeDetection() {
               var src_harris = new cv.Mat(snapshotWitdh, snapshotHeight, cv.CV_8U);
               var src_img = new cv.Mat(snapshotWitdh, snapshotHeight, cv.CV_8U);
               var src_grey = new cv.Mat(snapshotWitdh, snapshotHeight, cv.CV_8U);
+              var src_deligate = new cv.Mat(snapshotWitdh, snapshotHeight, cv.CV_8U);
+              var src_erode = new cv.Mat(snapshotWitdh, snapshotHeight, cv.CV_8U);
             // }   
             
             src_img = cv.imread(id);
@@ -120,10 +153,19 @@ async function edgeDetection() {
             src_canny = cv_Canny(src_grey);
             src_harris = cv_CornerHarris(src_canny);
             
+            let M = cv.Mat.ones(5, 5, cv.CV_8U);
+            let anchor = new cv.Point(-1, -1);
+            // You can try more different parameters
             
-            var result = cv.minMaxLoc(src_harris);
+            cv.erode(src_harris, src_erode, M, anchor, 1, cv.BORDER_CONSTANT, cv.morphologyDefaultBorderValue());
+            cv.dilate(src_erode, src_deligate, M, anchor, 1, cv.BORDER_CONSTANT, cv.morphologyDefaultBorderValue());
+
+            //cv.threshold gjør det ikke bedre!!!
+            //cv.threshold(src, dst, 177, 200, cv.THRESH_BINARY);
+            
+            
+            var result = cv.minMaxLoc(src_deligate);
             // console.log(result.maxLoc); 
-            cv.imshow(id, src_harris);
 
             var cornerX = result.maxLoc.x - snapshotWitdh/2 + corners[i].x;
             var cornerY = result.maxLoc.y - snapshotHeight/2 + corners[i].y;
@@ -137,10 +179,14 @@ async function edgeDetection() {
             // console.log(result.maxLoc.x, result.maxLoc.y);
              // console.log("mouse pos:" + clickX, clickY);
 
+             
+            cv.imshow(id, src_deligate);
+
             src_img.delete();
             src_grey.delete();
             src_canny.delete();
             src_harris.delete();
+            src_deligate.delete();
          }
         
 
@@ -156,6 +202,13 @@ async function edgeDetection() {
         srcCanny.delete();
         houghLine.delete();
         cornerMat.delete();
+    }else{
+        for(var i = 0; i<corners.length; i++){
+            var id = "snapshot_"+i;
+            var smallCanvas = document.getElementById(id);
+
+            smallCanvas.style.display = "none";
+        }}
     }, 42);
 }catch{return;}
 }

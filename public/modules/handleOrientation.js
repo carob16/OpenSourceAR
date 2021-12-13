@@ -8,9 +8,9 @@ function handleOrientation(event) {
   let DegToRad = Math.PI / 180;
 
   //print text
-  outputTextElement('xPosRot', `xPosRot : ${fixedNumber(x)}\n`);
-  outputTextElement('yPosRot', `yPosRot: ${fixedNumber(y)}\n`);
-  outputTextElement('zPosRot', `zPosRot: ${fixedNumber(z)}\n`);
+  outputTextElement('xPosRot', `xRotation : ${fixedNumber(x)}\n`);
+  outputTextElement('yPosRot', `yRotation: ${fixedNumber(y)}\n`);
+  outputTextElement('zPosRot', `zRotation: ${fixedNumber(z)}\n`);
 
   y = y * DegToRad;
   x = x * DegToRad;

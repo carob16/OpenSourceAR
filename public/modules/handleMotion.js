@@ -14,8 +14,6 @@ function handleMotion(event) {
   //var dt = event.interval;
   var xVel, yVel, zVel, xDistance, yDistance, zDistance;
 
-  // outputTextElement('dt', `dt : ${fixedNumber(dt)}\n`);
-
   //Calibrating the zero-offset of the acceleration
   if (calibrationCount <= calibCount + 1 && calibrateAcceleration == 1) {
     zumAccX.unshift(xAcc);
@@ -23,10 +21,6 @@ function handleMotion(event) {
     zumAccZ.unshift(zAcc);
     calibrationCount++;
 
-    outputTextElement(
-      'calibration',
-      `Calibration started - calibrationCount: ${calibrationCount}, zumAccX: ${zumAccX.length}`
-    );
     // finding the "zeroAcceleration"
     if (calibrationCount >= calibCount) {
       tmpArraySum = sumArray(zumAccX);
@@ -37,23 +31,6 @@ function handleMotion(event) {
 
       tmpArraySum = sumArray(zumAccZ);
       zeroAccelerationZ = tmpArraySum / zumAccZ.length;
-
-      outputTextElement(
-        'calibrationCompleted',
-        `Calibration completed : ${calibrationCount}`
-      );
-      outputTextElement(
-        'zeroAccelerationX',
-        `zeroAccelerationX : ${zeroAccelerationX}`
-      );
-      outputTextElement(
-        'zeroAccelerationY',
-        `zeroAccelerationY : ${zeroAccelerationY}`
-      );
-      outputTextElement(
-        'zeroAccelerationZ',
-        `zeroAccelerationZ : ${zeroAccelerationZ}`
-      );
     }
   } else {
     let t = new Date();
@@ -133,33 +110,24 @@ function handleMotion(event) {
 
     if (xAcc == 0) {
       xDir = 0;
-      outputTextElement('xDir', `xDir: ${xDir}`);
     } else if(xAcc<0){
       xDir = -1;
-      outputTextElement('xDir', `xDir: ${xDir}`);
     }else{
       xDir = 1;
-      outputTextElement('xDir', `xDir: ${xDir}`);
     }
     if (yAcc == 0) {
       yDir = 0;
-      outputTextElement('yDir', `yDir: ${yDir}`);
     } else if(yAcc<0){
       yDir = -1;
-      outputTextElement('yDir', `yDir: ${yDir}`);
     }else{
     yDir = 1;
-    outputTextElement('yDir', `yDir: ${yDir}`);
   }
     if (zAcc == 0) {
       zDir = 0;
-      outputTextElement('zDir', `zDir: ${zDir}`);
     } else if(zAcc<0){
       zDir = -1;
-      outputTextElement('zDir', `zDir: ${zDir}`);
     }else{
       zDir = 1;
-      outputTextElement('yDir', `yDir: ${zDir}`);
     }
     
 
@@ -171,14 +139,9 @@ function handleMotion(event) {
       if (zeroCountX >= zeroCountLimit) {
         xVel = 0;
         prevVelX = 0;
-        outputTextElement(
-          'zeroCountX',
-          `xVel is set to zero due to count limit`
-        );
       }
     } else {
       zeroCountX = 0;
-      outputTextElement('zeroCountX', ' ');
     }
     if (yAcc == 0) {
       zeroCountY++;
@@ -186,14 +149,9 @@ function handleMotion(event) {
       if (zeroCountY >= zeroCountLimit) {
         yVel = 0;
         prevVelY = 0;
-        outputTextElement(
-          'zeroCountY',
-          `yVel is set to zero due to count limit`
-        );
       }
     } else {
       zeroCountY = 0;
-      outputTextElement('zeroCountY', ' ');
     }
     if (zAcc == 0) {
       zeroCountZ++;
@@ -201,14 +159,9 @@ function handleMotion(event) {
       if (zeroCountZ >= zeroCountLimit) {
         zVel = 0;
         prevVelZ = 0;
-        outputTextElement(
-          'zeroCountZ',
-          `zVel is set to zero due to count limit`
-        );
       }
     } else {
       zeroCountZ = 0;
-      outputTextElement('zeroCountZ', ' ');
     }
 
     
@@ -273,14 +226,9 @@ function handleMotion(event) {
     outputTextElement('yDistance', `yDistance: ${fixedNumber(yDistance)}`);
     outputTextElement('zDistance', `zDistance: ${fixedNumber(zDistance)}`);
 
-    outputTextElement('xVel', `xVel : ${fixedNumber(xVel)}`);
-    outputTextElement('yVel', `yVel: ${fixedNumber(yVel)}`);
-    outputTextElement('zVel', `zVel: ${fixedNumber(zVel)}`);
-
     outputTextElement('xAcc', `xAcc : ${fixedNumber(xAcc)}`);
     outputTextElement('yAcc', `yAcc: ${fixedNumber(yAcc)}`);
     outputTextElement('zAcc', `zAcc: ${fixedNumber(zAcc)}`);
-
 
   }
 }}}

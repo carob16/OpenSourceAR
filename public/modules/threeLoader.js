@@ -54,9 +54,8 @@ function animate() {
   controls.alpha = alpha;
   controls.beta = beta;
   controls.gamma = gamma;
-  cube.position.x = prevPosX;
-  cube.position.y = prevPosY;
-  cube.position.z = prevPosZ;
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
   controls.update();
   //camera.getWorldDirection();
   renderer.render(scene, camera);

@@ -15,14 +15,14 @@ function handleMotion(event) {
   var xVel, yVel, zVel, xDistance, yDistance, zDistance;
 
   //Calibrating the zero-offset of the acceleration
-  if (calibrationCount <= calibCount + 1 && calibrateAcceleration == 1) {
+  if (calibrationCount <= calibCount + 1 && calibrateAcceleration) {
     zumAccX.unshift(xAcc);
     zumAccY.unshift(yAcc);
     zumAccZ.unshift(zAcc);
     calibrationCount++;
 
     // finding the "zeroAcceleration"
-    if (calibrationCount >= calibCount) {
+    if (calibrationCount >= calibCount ) {
       tmpArraySum = sumArray(zumAccX);
       zeroAccelerationX = tmpArraySum / zumAccX.length;
 
@@ -85,7 +85,7 @@ function handleMotion(event) {
   }
 
     //discard all accceleration data that is between a low threshold - noise
-    if(removeNoise == true){
+    if(removeNoise){
     if (Math.abs(xAcc) <= accTreshold) {
       xAcc = 0;
     }
@@ -97,15 +97,16 @@ function handleMotion(event) {
     }
 }
     //Discarding all accelerations that is noise/drift
+  if(ZeroCountFilter){
     if (xAcc == prevAccX) {
-      zeroCuntX++;
-      if (zeroCuntX >= zeroCountLimit) {
+      zeroCountX++;
+      if (zeroCountX >= zeroCountLimit) {
         xAcc = 0;
       }
     } else {
-      zeroCuntX = 0;
+      zeroCountX = 0;
     }
-
+  }
     //set direction from the acceleration
 
     if (xAcc == 0) {
@@ -133,6 +134,7 @@ function handleMotion(event) {
 
 
     //Set velocity to zero if acceleration is zero for a period of time
+  if(ZeroCountFilter){
     if (xAcc == 0) {
       zeroCountX++;
 
@@ -163,7 +165,7 @@ function handleMotion(event) {
     } else {
       zeroCountZ = 0;
     }
-
+  }
     
     //integrating the acc to get vel
     xVel =

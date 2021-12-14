@@ -4,7 +4,7 @@ var container = document.getElementById('container');
 //-----------EnableDisable statuses------------
 var enableEdgeDetection = false;
 var enableThreeLoader =false;
-var enableAccelerometer =false;
+var enableAccelerometer =true;
 
 //-----------DeviceOrientationcontrols and handleOrientation------------
 var xPosRot, yPosRot, zPosRot;
@@ -37,9 +37,9 @@ let zeroAccelerationX = 0,
   zeroAccelerationY = 0,
   zeroAccelerationZ = 0,
   accelerationScale = 0.0005,
-  calibrateAcceleration = true;
+  calibrateAcceleration = false;
 
-var removeNoise = true;
+var removeNoise = false;
 
 //Directions
 let xDir = 0,
@@ -47,7 +47,8 @@ let xDir = 0,
   zDir = 0;
 
 //Threshold and lowpassfilter
-let lowpassFilter = true;
+let lowpassFilter = false;
+let ZeroCountFilter = false;
 
 let lowPassAccX = 0,
 lowPassAccY = 0,
@@ -63,6 +64,7 @@ let zeroCountX = 0,
   zeroCountY = 0,
   zeroCountZ = 0,
   zeroCountLimit = 3;
+
 
 let timeArray = [0, 0],
   dt = 0;

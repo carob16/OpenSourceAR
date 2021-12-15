@@ -10,14 +10,14 @@
        <script async src="modules/opencv.js" onload="opencvcheck()" type="text/javascript"></script>
 <body>   
     <div id="checkboxes">                   
-        <input type="checkbox" id="toggleEdgedetection" value="true" onchange="enableDisableEdgeDetection(this)">
+        <input type="checkbox" id="toggleEdgedetection" value="true" onchange="enableDisableEdgeDetection(this)" >
         <label for="toggleEdgedetection">EdgeDetection</label><br><br>
         <input type="checkbox" id="toggleThreeLoader" value="true" onchange="enableDisableThreeLoader(this)">
         <label for="toggleThreeLoader">threeLoader</label><br><br>
-        <input type="checkbox" id="toggleAccelerometer" value="true" onchange="enableDisableAccelerometer(this)">
+        <input type="checkbox" id="toggleAccelerometer" value="true" onchange="enableDisableAccelerometer(this)" checked>
         <label for="toggleAccelerometer">Accelerometer</label><br><br>           
 
-        <button id="csv-button" onclick="downloadCSV()" class="button">Download CSV</button><br><br>
+        <button id="csv-button" onclick="downloadCSV('accelerationData.csv')" class="button">Download CSV</button><br><br>
         <button id="fullscreenBtn" onclick="toggleFullscreen()" class="button">Fullscreen</button>
     </div> 
 
@@ -30,14 +30,8 @@
         ></canvas>
 
     
-        <div id="output" >  
-                    <input type="range" min="1", max="7" value="2" id="slider_1" > 
-                    <input type="range" min="1", max="15" value="9" step="2" id="slider_2" > 
-                    <input type="range" min="1", max="200" value="4" id="slider_3" > 
-
-                    <br><p id="pageTitle">My OPEN SOURCE AR_TEST PAGE </p>  </div>
-
-<!--button id="downloadCSV" onclick="downloadCSV('accelerationData.csv')">Download CSV</button-->
+        <div id="output">  
+                    <br><p id="pageTitle">OPEN SOURCE AR_TEST PAGE </p>  </div>
 
 <script type="text/javascript" src="./modules/cameraLoader.js"></script>  
 <script type="module" src="./modules/threeLoader.js"></script>

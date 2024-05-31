@@ -5,6 +5,6 @@ This project is made as a test of embedded sensors and three.js-module as module
 
 All code is collected or made from OpenSource Libraries or free WEB API's
 
-Rapport from presented project is in the Document-folder
+Rapport from presented project is found in Bachelorprosjekt_DAT303_V2021 (1).pdf
 
 
